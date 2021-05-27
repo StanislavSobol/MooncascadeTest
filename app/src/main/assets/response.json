@@ -1,0 +1,208 @@
+{
+  "forecasts": [
+    {
+      "date": "2021-05-28",
+      "day": {
+        "phenomenon": "Light shower",
+        "tempmin": 12,
+        "tempmax": 17,
+        "text": "Variable cloud. Locally rain showers. Before noon remains locally fog. Wind around west 3-8, on coast up to 10 m/s. Air temperature 13..17, on coast locally 10.",
+        "sea": "",
+        "peipsi": "Wind around west 3-8 m/s. Wave height 0,3-0,8 m. Rain showers. By morning locally fog, otherwise visibility moderate. Air temperature 9..10°C.",
+        "places": [
+          {
+            "name": "Harku",
+            "phenomenon": "Light shower",
+            "tempmin": null,
+            "tempmax": 13
+          },
+          {
+            "name": "Jõhvi",
+            "phenomenon": "Few clouds",
+            "tempmin": null,
+            "tempmax": 16
+          },
+          {
+            "name": "Tartu",
+            "phenomenon": "Light shower",
+            "tempmin": null,
+            "tempmax": 16
+          },
+          {
+            "name": "Pärnu",
+            "phenomenon": "Variable clouds",
+            "tempmin": null,
+            "tempmax": 14
+          },
+          {
+            "name": "Kuressaare",
+            "phenomenon": "Light shower",
+            "tempmin": null,
+            "tempmax": 12
+          },
+          {
+            "name": "Türi",
+            "phenomenon": "Variable clouds",
+            "tempmin": null,
+            "tempmax": 15
+          }
+        ],
+        "winds": [
+          {
+            "name": "Kuusiku",
+            "direction": "Southwest wind",
+            "speedmin": 3,
+            "speedmax": 6
+          },
+          {
+            "name": "Väike-Maarja",
+            "direction": "Southwest wind",
+            "speedmin": 3,
+            "speedmax": 6
+          },
+          {
+            "name": "Võrtsjärv",
+            "direction": "West wind",
+            "speedmin": 3,
+            "speedmax": 7
+          }
+        ]
+      },
+      "night": {
+        "phenomenon": "Light shower",
+        "tempmin": 3,
+        "tempmax": 9,
+        "text": "Variable cloud. locally rain showers. Fog in many places. Variable wind 1-7 m/s. Air temperature 3..9, on ground possible locally 0.",
+        "sea": "May 27, 2021 11:05 UTC  \n\nForecast for Baltic Sea valid 24 hours from 13:00 UTC May 27 to 13:00 UTC May 28, 2021.\n\nWeather summary: Low near Stockholm moving to Northern Baltic by night and slowly filling up.  \n\nNo warnings. \n\nNorthern Baltic: \nsoutherly winds 6-11, tomorrow variable 2-7 m/s. Locally rain showers. At night, in morning fog in many places, otherwise visibility moderate. \n\nMoonsund, Northern Gulf of Riga: \nsoutherly winds 4-9, at night variable 2-6, by day westerly 4-9 m/s.  Locally rain showers. At night, in morning fog in many places, otherwise visibility moderate. \n\nGulf of Finland: \nmainly southeast 4-9, at night variable 2-6, by day westerly 4-9, in eastern water in gusts 12 m/s. Locally rain showers. At night, in morning fog in many places, otherwise visibility moderate. \n",
+        "peipsi": "Variable 1-6 m/s. Wave height 0,3-0,8 m. Mainly dry. Fog, otherwise visibility moderate. Air temperature 9..10°C.",
+        "places": [
+          {
+            "name": "Harku",
+            "phenomenon": "Variable clouds",
+            "tempmin": 7,
+            "tempmax": null
+          },
+          {
+            "name": "Jõhvi",
+            "phenomenon": "Few clouds",
+            "tempmin": 6,
+            "tempmax": null
+          },
+          {
+            "name": "Tartu",
+            "phenomenon": "Fog",
+            "tempmin": 6,
+            "tempmax": null
+          },
+          {
+            "name": "Pärnu",
+            "phenomenon": "Light shower",
+            "tempmin": 9,
+            "tempmax": null
+          },
+          {
+            "name": "Kuressaare",
+            "phenomenon": "Light rain",
+            "tempmin": 9,
+            "tempmax": null
+          },
+          {
+            "name": "Türi",
+            "phenomenon": "Light shower",
+            "tempmin": 4,
+            "tempmax": null
+          }
+        ],
+        "winds": [
+          {
+            "name": "Kuusiku",
+            "direction": "Southwest wind",
+            "speedmin": 1,
+            "speedmax": 5
+          },
+          {
+            "name": "Väike-Maarja",
+            "direction": "West wind",
+            "speedmin": 1,
+            "speedmax": 5
+          },
+          {
+            "name": "Võrtsjärv",
+            "direction": "West wind",
+            "speedmin": 1,
+            "speedmax": 6
+          }
+        ]
+      }
+    },
+    {
+      "date": "2021-05-29",
+      "day": {
+        "phenomenon": "Light shower",
+        "tempmin": 13,
+        "tempmax": 17,
+        "text": "Slightly and partly cloudy. Local showers, probability is higher in southern Estonia. Wind around north 4-9, on coast in gusts up to 12 m/s. Air temperature 13..17, on coast locally 10°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      },
+      "night": {
+        "phenomenon": "Light shower",
+        "tempmin": 3,
+        "tempmax": 8,
+        "text": "Slightly and partly cloudy with local showers. Wind around north 2-7, on northern coast up to 11 m/s. Air temperature 3..8, on ground locally 0°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      }
+    },
+    {
+      "date": "2021-05-30",
+      "day": {
+        "phenomenon": "Few clouds",
+        "tempmin": 13,
+        "tempmax": 17,
+        "text": "Slightly cloudy and dry. Variable wind 1-7 m/s. Air temperature 13..17, on the coast locally 11°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      },
+      "night": {
+        "phenomenon": "Clear",
+        "tempmin": 2,
+        "tempmax": 8,
+        "text": "Mainly clear. Mainly northerly wind 1-6 m/s. Air temperature 2..8, on the ground locally 0..-2°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      }
+    },
+    {
+      "date": "2021-05-31",
+      "day": {
+        "phenomenon": "Few clouds",
+        "tempmin": 15,
+        "tempmax": 19,
+        "text": "Slightly cloudy and dry. Variable wind 2-7 m/s. Air temperature 15..19, on coast locally 12°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      },
+      "night": {
+        "phenomenon": "Clear",
+        "tempmin": 2,
+        "tempmax": 9,
+        "text": "Clear. Variable wind 1-5 m/s. Air temperature 2..7, on the ground locally 0..-2°C, on coast locally 9°C.",
+        "sea": null,
+        "peipsi": null,
+        "places": null,
+        "winds": null
+      }
+    }
+  ]
+}

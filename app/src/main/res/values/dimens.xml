@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Fonts-->
+    <dimen name="font_bigger">22sp</dimen>
+    <dimen name="font_big">16sp</dimen>
+    <dimen name="font_regular">12sp</dimen>
+
+    <!--Margins-->
+    <dimen name="smaller_margin">4dp</dimen>
+    <dimen name="small_margin">6dp</dimen>
+    <dimen name="small_medium_margin">12dp</dimen>
+    <dimen name="medium_margin">24dp</dimen>
+
+    <!--CardView-->
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="card_radius">4dp</dimen>
+
+    <!--Misc-->
+    <dimen name="separator_height">1dp</dimen>
+    <dimen name="progress_bar_size">60dp</dimen>
+</resources>

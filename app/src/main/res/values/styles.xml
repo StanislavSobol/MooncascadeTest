@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextTitle">
+        <item name="android:textSize">@dimen/font_bigger</item>
+    </style>
+
+    <style name="TextTitle.Toolbar">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextBig">
+        <item name="android:textSize">@dimen/font_big</item>
+    </style>
+
+    <style name="TextRegular">
+        <item name="android:textSize">@dimen/font_regular</item>
+    </style>
+
+    <style name="DialogButton">
+        <item name="android:textSize">@dimen/font_big</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:padding">@dimen/small_medium_margin</item>
+    </style>
+
+    <style name="HorizontalSeparator">
+        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+</resources>

@@ -1,7 +1,8 @@
-package com.example.mooncascadetest
+package com.example.mooncascadetest.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.mooncascadetest.R
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
