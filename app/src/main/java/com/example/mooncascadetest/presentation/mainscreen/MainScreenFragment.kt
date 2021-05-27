@@ -1,5 +1,7 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
+import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.mooncascadetest.MApplication
 import com.example.mooncascadetest.R
@@ -23,6 +25,12 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
             .appComponent(MApplication.getAppComponent())
             .build()
             .inject(this)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel
     }
 
     companion object {

@@ -32,7 +32,7 @@ abstract class BaseViewModel : ViewModel() {
 
     }
 
-    fun withProgressInDispatchersIO(hideLoadingStatusWhenDone: Boolean, block: suspend () -> Unit) {
+    fun launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone: Boolean, block: suspend () -> Unit) {
         viewModelScope.launch {
             try {
                 showProgress()
