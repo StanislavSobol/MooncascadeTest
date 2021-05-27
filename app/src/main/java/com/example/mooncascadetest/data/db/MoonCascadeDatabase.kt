@@ -2,15 +2,14 @@ package com.example.mooncascadetest.data.db
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import java.util.*
 
-@Database(entities = [ForecastEntity::class], version = 1)
-//@TypeConverters(Converters::class)
+@Database(entities = [ForecastEntity::class, PlaceEntity::class, WindEntity::class], version = 11)
+@TypeConverters(Converters::class)
 abstract class MoonCascadeDatabase : RoomDatabase() {
 
-//    abstract fun getVehiclesDao(): VehiclesDao
+    abstract fun getForecastDao(): ForecastDao
 
     companion object {
 
@@ -30,15 +29,14 @@ abstract class MoonCascadeDatabase : RoomDatabase() {
     }
 }
 
-// TODO Witch this
-//internal class Converters {
-//    @TypeConverter
-//    fun fromTimestamp(value: Long?): Date? {
-//        return value?.let { Date(it) }
-//    }
-//
-//    @TypeConverter
-//    fun dateToTimestamp(date: Date?): Long? {
-//        return date?.time
-//    }
-//}
+internal class Converters {
+    @TypeConverter
+    fun fromTimestamp(value: Long?): Date? {
+        return value?.let { Date(it) }
+    }
+
+    @TypeConverter
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
+    }
+}

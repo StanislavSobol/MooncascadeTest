@@ -1,19 +1,33 @@
 package com.example.mooncascadetest.data.db
 
-import androidx.room.Dao
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface ForecastDao {
 
-//    @Query("SELECT * FROM ForecastEntity ORDER BY lastEngineOnTime DESC")
-//    fun getVehicles(): LiveData<List<ForecastEntity>>
-//
+    @Transaction
+    @Query("SELECT * FROM ForecastEntity")
+    fun selectAll(): LiveData<List<ForecastWithPlacesAdWinds>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(forecast: ForecastEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPlace(place: PlaceEntity)
+
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    fun insert(item: ForecastEntity)
-//
-//    @Query("DELETE FROM ForecastEntity")
-//    fun deleteAll()
-//
-//    @Query("SELECT * FROM ForecastEntity WHERE objectId = :objectId")
-//    fun getByObjectId(objectId: Int): ForecastEntity
+//    fun insertPlaces(places: List<PlaceEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertWind(places: WindEntity)
+
+    @Query("DELETE FROM ForecastEntity")
+    fun deleteAll()
+
+    @Query("DELETE FROM PlaceEntity")
+    fun deleteAllPlaces()
+
+    @Query("DELETE FROM WindEntity")
+    fun deleteAllWinds()
 }

@@ -1,6 +1,7 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.mooncascadetest.MApplication
@@ -30,7 +31,12 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel
+        viewModel.vehiclesLiveData.observe {
+            Log.d("SSS", "Start it = ${it.size}")
+            it.forEach { item ->
+                Log.d("SSS", "item = $item")
+            }
+        }
     }
 
     companion object {

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.example.mooncascadetest.R
 
 /**
@@ -52,6 +54,10 @@ abstract class BaseFragment(
     }
 
     protected abstract fun injectDependencies()
+
+    protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
+        observe(viewLifecycleOwner, Observer { block.invoke(it) })
+    }
 }
 
 enum class FragmentType {

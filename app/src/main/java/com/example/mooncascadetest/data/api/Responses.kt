@@ -3,29 +3,37 @@ package com.example.mooncascadetest.data.api
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class VehiclesResponse(
-    @SerializedName("status") val status: Int,
-    @SerializedName("response") val response: List<VehicleItemResponse>
+data class ForecastsResponse(
+    @SerializedName("forecasts") val forecast: List<ForecastModel>
 )
 
-data class VehicleItemResponse(
-    @SerializedName("objectId") val objectId: Int,
-    @SerializedName("plate") val plate: String,
-    @SerializedName("driverName") val driverName: String,
-    @SerializedName("speed") val speed: Float,
-    @SerializedName("address") val address: String,
-    @SerializedName("lastEngineOnTime") val lastEngineOnTime: Date?
+data class ForecastModel(
+    @SerializedName("date") val date: Date,
+    @SerializedName("day") val day: DayOrNightModel,
+    @SerializedName("night") val night: DayOrNightModel
 )
 
-data class VehiclesRawResponse(
-    @SerializedName("status") val status: Int,
-    @SerializedName("response") val response: List<VehicleRawItemResponse>
+data class DayOrNightModel(
+    @SerializedName("phenomenon") val phenomenon: String?,
+    @SerializedName("tempmin") val tempmin: Int?,
+    @SerializedName("tempmax") val tempmax: Int?,
+    @SerializedName("text") val text: String?,
+    @SerializedName("sea") val sea: String?,
+    @SerializedName("peipsi") val peipsi: String?,
+    @SerializedName("places") val places: List<PlaceModel>?,
+    @SerializedName("winds") val winds: List<WindsResponse>?
 )
 
-data class VehicleRawItemResponse(
-    @SerializedName("timestamp") val timestamp: Date,
-    @SerializedName("Distance") val distance: Float?,
-    @SerializedName("DeltaDistance") val deltaDistance: Float?,
-    @SerializedName("Longitude") val longitude: Double,
-    @SerializedName("Latitude") val latitude: Double
+data class PlaceModel(
+    @SerializedName("name") val name: String?,
+    @SerializedName("phenomenon") val phenomenon: String?,
+    @SerializedName("tempmin") val tempmin: Int?,
+    @SerializedName("tempmax") val tempmax: Int?
+)
+
+data class WindsResponse(
+    @SerializedName("name") val name: String?,
+    @SerializedName("direction") val direction: String?,
+    @SerializedName("speedmin") val speedmin: Int?,
+    @SerializedName("speedmax") val speedmax: Int?
 )
