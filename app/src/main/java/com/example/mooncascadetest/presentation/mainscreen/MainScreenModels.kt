@@ -1,5 +1,6 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.data.db.ForecastWithPlacesAdWinds
@@ -22,9 +23,13 @@ data class DayForecastMainScreenListItem(
     val dayPhenomenon: String,
     val nightPhenomenon: String,
     val dayTempRange: String,
-    val dayTempRangeWords: String,
+    val dayMinTempWords: String,
+    val dayMaxTempWords: String,
+//    val dayTempRangeWords: String,
     val nightTempRange: String,
-    val nightTempRangeWords: String,
+    val nightMinTempWords: String,
+    val nightMaxTempWords: String,
+//    val nightTempRangeWords: String,
     val dayText: String,
     val nightText: String,
     val daySea: String,
@@ -49,21 +54,25 @@ data class DayForecastMainScreenListItem(
                 forecastWithPlacesAdWinds.forecast.day?.tempmax,
                 resourceManager
             ),
-            dayTempRangeWords = createTempRangeWords(
-                forecastWithPlacesAdWinds.forecast.day?.tempmin,
-                forecastWithPlacesAdWinds.forecast.day?.tempmax,
-                resourceManager
-            ),
+            dayMinTempWords = createMinTempWord(forecastWithPlacesAdWinds.forecast.day?.tempmin, resourceManager),
+            dayMaxTempWords = createMaxTempWord(forecastWithPlacesAdWinds.forecast.day?.tempmax, resourceManager),
+//            dayTempRangeWords = createTempRangeWords(
+//                forecastWithPlacesAdWinds.forecast.day?.tempmin,
+//                forecastWithPlacesAdWinds.forecast.day?.tempmax,
+//                resourceManager
+//            ),
             nightTempRange = createTempRange(
                 forecastWithPlacesAdWinds.forecast.night?.tempmin,
                 forecastWithPlacesAdWinds.forecast.night?.tempmax,
                 resourceManager
             ),
-            nightTempRangeWords = createTempRangeWords(
-                forecastWithPlacesAdWinds.forecast.day?.tempmin,
-                forecastWithPlacesAdWinds.forecast.day?.tempmax,
-                resourceManager
-            ),
+            nightMinTempWords = createMinTempWord(forecastWithPlacesAdWinds.forecast.night?.tempmin, resourceManager),
+            nightMaxTempWords = createMaxTempWord(forecastWithPlacesAdWinds.forecast.night?.tempmax, resourceManager),
+//            nightTempRangeWords = createTempRangeWords(
+//                forecastWithPlacesAdWinds.forecast.day?.tempmin,
+//                forecastWithPlacesAdWinds.forecast.day?.tempmax,
+//                resourceManager
+//            ),
             dayText = forecastWithPlacesAdWinds.forecast.day?.text ?: EMPTY_STRING,
             nightText = forecastWithPlacesAdWinds.forecast.night?.text ?: EMPTY_STRING,
             daySea = forecastWithPlacesAdWinds.forecast.night?.sea ?: EMPTY_STRING,
@@ -71,6 +80,7 @@ data class DayForecastMainScreenListItem(
             dayPeipsi = forecastWithPlacesAdWinds.forecast.night?.peipsi ?: EMPTY_STRING,
             nightPeipsi = forecastWithPlacesAdWinds.forecast.night?.peipsi ?: EMPTY_STRING
         )
+
 
         @VisibleForTesting
         internal fun createTempRange(minTemp: Int?, maxTemp: Int?, resourceManager: ResourceManager): String {
@@ -90,25 +100,30 @@ data class DayForecastMainScreenListItem(
             }
         }
 
-        private fun createTempRangeWords(minTemp: Int?, maxTemp: Int?, resourceManager: ResourceManager): String {
-            if (minTemp == null && maxTemp == null) {
-                return EMPTY_STRING
-            }
+//        @Deprecated("noway")
+//        private fun createTempRangeWords(minTemp: Int?, maxTemp: Int?, resourceManager: ResourceManager): String {
+//            if (minTemp == null && maxTemp == null) {
+//                return EMPTY_STRING
+//            }
+//
+//            if (minTemp != null && maxTemp != null) {
+//                val value = "${intToWord(minTemp, resourceManager)} ${intToWord(maxTemp, resourceManager)}"
+//                return resourceManager.getString(R.string.temp_range, value)
+//            }
+//
+//            return when {
+//                minTemp != null -> resourceManager.getString(R.string.temp_range, intToWord(minTemp, resourceManager))
+//                maxTemp != null -> resourceManager.getString(R.string.temp_range, intToWord(maxTemp, resourceManager))
+//                else -> throw IllegalStateException()
+//            }
+//        }
 
-            if (minTemp != null && maxTemp != null) {
-                val minTempWord = intToWord(minTemp, resourceManager)
-                val maxTempWord = intToWord(maxTemp, resourceManager)
+        private fun createMinTempWord(temp: Int?, resourceManager: ResourceManager): String {
+            return resourceManager.getString(R.string.min_temp_words, intToWord(temp, resourceManager))
+        }
 
-
-                val value = "${intToWord(minTemp, resourceManager)} ${intToWord(maxTemp, resourceManager)}"
-                return resourceManager.getString(R.string.temp_range, value)
-            }
-
-            return when {
-                minTemp != null -> resourceManager.getString(R.string.temp_range, intToWord(minTemp, resourceManager))
-                maxTemp != null -> resourceManager.getString(R.string.temp_range, intToWord(maxTemp, resourceManager))
-                else -> throw IllegalStateException()
-            }
+        private fun createMaxTempWord(temp: Int?, resourceManager: ResourceManager): String {
+            return resourceManager.getString(R.string.max_temp_words, intToWord(temp, resourceManager))
         }
 
         @VisibleForTesting
@@ -121,6 +136,8 @@ data class DayForecastMainScreenListItem(
             val minus = if (value < 0) resourceManager.getString(R.string.minus) else EMPTY_STRING
 
             val valueAbs = value.absoluteValue
+
+            Log.d("SSS", "value = $value")
 
             val words = when {
                 valueAbs < 10 -> resourceManager.getStringArray(R.array.digits_arr)[valueAbs]

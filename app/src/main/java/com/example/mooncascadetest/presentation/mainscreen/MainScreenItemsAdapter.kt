@@ -88,12 +88,16 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
 
                 dayPhenomenonTextView.setTextWithVisibility(item.dayPhenomenon)
                 dayTempTextView.setTextWithVisibility(item.dayTempRange)
+                dayMinTempWordsTextView.setTextWithVisibility(item.dayMinTempWords)
+                dayMaxTempWordsTextView.setTextWithVisibility(item.dayMaxTempWords)
                 dayTextTextView.setTextWithVisibility(item.dayText)
                 daySeaTextView.setTextWithVisibility(item.daySea)
                 dayPeipsiTextView.setTextWithVisibility(item.dayPeipsi)
 
                 nightPhenomenonTextView.setTextWithVisibility(item.nightPhenomenon)
                 nightTempTextView.setTextWithVisibility(item.nightTempRange)
+                nightMinTempWordsTextView.setTextWithVisibility(item.dayMinTempWords)
+                nightMaxTempWordsTextView.setTextWithVisibility(item.dayMaxTempWords)
                 nightTextTextView.setTextWithVisibility(item.nightText)
                 nightSeaTextView.setTextWithVisibility(item.nightSea)
                 nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)
@@ -106,12 +110,16 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
 
                 dayPhenomenonTextView.setTextWithVisibility(item.dayPhenomenon)
                 dayTempTextView.setTextWithVisibility(item.dayTempRange)
+                dayMinTempWordsTextView.setTextWithVisibility(item.dayMinTempWords)
+                dayMaxTempWordsTextView.setTextWithVisibility(item.dayMaxTempWords)
                 dayTextTextView.setTextWithVisibility(item.dayText)
                 daySeaTextView.setTextWithVisibility(item.daySea)
                 dayPeipsiTextView.setTextWithVisibility(item.dayPeipsi)
 
                 nightPhenomenonTextView.setTextWithVisibility(item.nightPhenomenon)
                 nightTempTextView.setTextWithVisibility(item.nightTempRange)
+                nightMinTempWordsTextView.setTextWithVisibility(item.nightMinTempWords)
+                nightMaxTempWordsTextView.setTextWithVisibility(item.nightMaxTempWords)
                 nightTextTextView.setTextWithVisibility(item.nightText)
                 nightSeaTextView.setTextWithVisibility(item.nightSea)
                 nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)

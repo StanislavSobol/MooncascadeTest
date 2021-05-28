@@ -65,7 +65,7 @@
                 tools:text="@string/temp_range" />
 
             <TextView
-                android:id="@+id/dayTextTextView"
+                android:id="@+id/dayMinTempWordsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/small_margin"
@@ -74,6 +74,30 @@
                 android:textAppearance="@style/TextRegular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dayTempTextView"
+                tools:text="dayMinTempWordsTextView" />
+
+            <TextView
+                android:id="@+id/dayMaxTempWordsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:textAppearance="@style/TextRegular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dayMinTempWordsTextView"
+                tools:text="dayMaxTempWordsTextView" />
+
+            <TextView
+                android:id="@+id/dayTextTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:textAppearance="@style/TextRegular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dayMaxTempWordsTextView"
                 tools:text="Day Text field of the json" />
 
             <TextView
@@ -136,6 +160,31 @@
                 app:layout_constraintTop_toBottomOf="@id/nightPhenomenonTextView"
                 tools:text="@string/temp_range" />
 
+
+            <TextView
+                android:id="@+id/nightMinTempWordsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:textAppearance="@style/TextRegular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nightTempTextView"
+                tools:text="nightMinTempWordsTextView" />
+
+            <TextView
+                android:id="@+id/nightMaxTempWordsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:layout_marginTop="@dimen/small_margin"
+                android:textAppearance="@style/TextRegular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nightMinTempWordsTextView"
+                tools:text="nightMaxTempWordsTextView" />
+
             <TextView
                 android:id="@+id/nightTextTextView"
                 android:layout_width="wrap_content"
@@ -145,7 +194,7 @@
                 android:layout_marginTop="@dimen/small_margin"
                 android:textAppearance="@style/TextRegular"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightTempTextView"
+                app:layout_constraintTop_toBottomOf="@id/nightMaxTempWordsTextView"
                 tools:text="nightTextTextView" />
 
             <TextView

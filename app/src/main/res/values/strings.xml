@@ -12,6 +12,8 @@
     <string name="day">Day:</string>
     <string name="night">Night:</string>
     <string name="temp_range">%s \u00B0C</string>
+    <!--    <string name="temp_range_words_one">Min temperature is %s. Max temperature is %s</string>-->
+    <!--    <string name="temp_range_words_both">Min temperature is %s. Max temperature is %s</string>-->
     <string name="minus">minus</string>
 
     <!--    <plurals name="degree_plural">-->
@@ -19,6 +21,13 @@
     <!--        <item quantity="one">%1$d degree Celsius</item>-->
     <!--        <item quantity="other">%1$d degrees Celsius</item>-->
     <!--    </plurals>-->
+
+
+    <string name="one_degree">degree Celsius</string>
+    <string name="plural_degrees">degrees Celsius</string>
+
+    <string name="min_temp_words">Min temperature is %s</string>
+    <string name="max_temp_words">Max temperature is %s</string>
 
     <string-array name="digits_arr">
         <item>zero</item>
@@ -34,6 +43,7 @@
     </string-array>
 
     <string-array name="second_dec_arr">
+        <item>ten</item>
         <item>eleven</item>
         <item>twelve</item>
         <item>thirteen</item>
@@ -56,9 +66,6 @@
         <item>eighty</item>
         <item>ninety</item>
     </string-array>
-
-    <string name="one_degree">degree Celsius</string>
-    <string name="plural_degrees">degrees Celsius</string>
 
     <!--    <string name="nun_20">twenty</string>-->
     <!--    <string name="nun_30">thirty</string>-->
