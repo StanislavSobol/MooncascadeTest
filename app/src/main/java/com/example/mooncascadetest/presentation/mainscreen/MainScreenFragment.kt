@@ -1,11 +1,13 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.mooncascadetest.MApplication
 import com.example.mooncascadetest.R
+import com.example.mooncascadetest.databinding.FragmentMainScreenBinding
 import com.example.mooncascadetest.di.DaggerMainScreenComponent
 import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
@@ -14,12 +16,15 @@ import javax.inject.Inject
 
 class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_main_screen) {
 
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel: MainScreenViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(MainScreenViewModel::class.java)
     }
+
+    private lateinit var binding: FragmentMainScreenBinding
 
     override fun injectDependencies() {
         DaggerMainScreenComponent.builder()
@@ -28,15 +33,24 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
             .inject(this)
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.vehiclesLiveData.observe {
-            Log.d("SSS", "Start it = ${it.size}")
-            it.forEach { item ->
-                Log.d("SSS", "item = $item")
-            }
-        }
+//        viewModel.vehiclesLiveData.observe {
+//            Log.d("SSS", "Start it = ${it.size}")
+//            it.forEach { item ->
+//                Log.d("SSS", "item = $item")
+//            }
+//        }
+
+        val adapter = MainScreenItemsAdapter().apply { itemOnClick = { } }
+        binding.recyclerView.adapter = adapter
+        viewModel.forecastLiveData.observe { adapter.setItems(it) }
     }
 
     companion object {

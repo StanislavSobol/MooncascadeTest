@@ -6,4 +6,10 @@
     <string name="loading">Loading…</string>
     <string name="building_map">Building map data…</string>
     <string name="no_vehicle_data">No data for the vehicle for this day</string>
+
+
+    <string name="day">Day:</string>
+    <string name="night">Night:</string>
+    <string name="current_day_temp">%d .. %d  \u00B0</string>
+
 </resources>

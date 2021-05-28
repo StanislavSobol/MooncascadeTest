@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardElevation="@dimen/cardview_default_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/small_margin"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="28 May 2021" />
+
+        <TextView
+            android:id="@+id/dayTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            android:text="@string/day"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+
+        <TextView
+            android:id="@+id/dayPhenomenonTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTitleTextView"
+            tools:text="dayPhenomenonTextView" />
+
+        <TextView
+            android:id="@+id/dayTempTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayPhenomenonTextView"
+            tools:text="@string/current_day_temp" />
+
+        <TextView
+            android:id="@+id/dayTextTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTempTextView"
+            tools:text="Day Text field of the json" />
+
+        <TextView
+            android:id="@+id/daySeaTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTextTextView"
+            tools:text="Day Sea field of the json" />
+
+        <TextView
+            android:id="@+id/dayPeipsiTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/daySeaTextView"
+            tools:text="day PeipsiTextView field of the json" />
+
+        <TextView
+            android:id="@+id/nightTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            android:text="@string/night"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayPeipsiTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,21 +1,22 @@
 package com.example.mooncascadetest.data.db
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 import com.example.mooncascadetest.data.api.ForecastModel
 import com.example.mooncascadetest.data.api.PlaceModel
 import com.example.mooncascadetest.data.api.WindModel
 import java.util.*
 
+private const val DAY_PREFIX = "day_"
+private const val NIGHT_PREFIX = "night_"
+private const val DATE_FIELD = "date"
+
 @Entity
 data class ForecastEntity(
     @PrimaryKey
     val date: Date,
-    @Embedded(prefix = "day_")
+    @Embedded(prefix = DAY_PREFIX)
     val day: DayOrNightEntity?,
-    @Embedded(prefix = "night_")
+    @Embedded(prefix = NIGHT_PREFIX)
     val night: DayOrNightEntity?
 )
 
@@ -42,11 +43,17 @@ data class DayOrNightEntity(
     }
 }
 
-@Entity
+@Entity(
+    foreignKeys = [ForeignKey(
+        entity = ForecastEntity::class,
+        parentColumns = arrayOf(DATE_FIELD),
+        childColumns = arrayOf(DATE_FIELD),
+        onDelete = ForeignKey.CASCADE
+    )]
+)
 data class PlaceEntity(
     @PrimaryKey(autoGenerate = true)
     val placeId: Int = 0,
-    // FK
     val date: Date,
     val isday: Boolean,
     val name: String?,
@@ -66,11 +73,17 @@ data class PlaceEntity(
     }
 }
 
-@Entity
+@Entity(
+    foreignKeys = [ForeignKey(
+        entity = ForecastEntity::class,
+        parentColumns = arrayOf(DATE_FIELD),
+        childColumns = arrayOf(DATE_FIELD),
+        onDelete = ForeignKey.CASCADE
+    )]
+)
 data class WindEntity(
     @PrimaryKey(autoGenerate = true)
     val windId: Int = 0,
-    // FK
     val date: Date,
     val isday: Boolean,
     val name: String?,
@@ -92,14 +105,14 @@ data class WindEntity(
 
 class ForecastWithPlacesAdWinds(@Embedded val forecast: ForecastEntity) {
     @Relation(
-        parentColumn = "date",
-        entityColumn = "date"
+        parentColumn = DATE_FIELD,
+        entityColumn = DATE_FIELD
     )
     var places: List<PlaceEntity>? = null
 
     @Relation(
-        parentColumn = "date",
-        entityColumn = "date"
+        parentColumn = DATE_FIELD,
+        entityColumn = DATE_FIELD
     )
     var winds: List<WindEntity>? = null
 }
