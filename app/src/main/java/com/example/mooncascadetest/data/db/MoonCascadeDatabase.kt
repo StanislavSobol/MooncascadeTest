@@ -11,6 +11,10 @@ abstract class MoonCascadeDatabase : RoomDatabase() {
 
     abstract fun getForecastDao(): ForecastDao
 
+    abstract fun getPlaceDao(): PlaceDao
+
+    abstract fun getWindDao(): WindDao
+
     companion object {
 
         private var instance: MoonCascadeDatabase? = null

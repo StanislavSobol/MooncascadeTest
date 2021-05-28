@@ -21,93 +21,34 @@ class RepositoryImpl(
             throw MoonCascadeException(resourceManager.getString(R.string.offline))
         }
 
-        db.getForecastDao().deleteAllWinds()
-        db.getForecastDao().deleteAllPlaces()
+        db.getWindDao().deleteAll()
+        db.getPlaceDao().deleteAll()
         db.getForecastDao().deleteAll()
 
         api.getForecast().forecast.forEach {
             val forecastEntity = ForecastEntity(
                 date = it.date,
-                // TODO from
-                day = DayOrNightEntity(
-                    phenomenon = it.day.phenomenon,
-                    tempmin = it.day.tempmin,
-                    tempmax = it.day.tempmax,
-                    text = it.day.text,
-                    sea = it.day.sea,
-                    peipsi = it.day.peipsi
-                ),
-                // TODO from
-                night = DayOrNightEntity(
-                    phenomenon = it.night.phenomenon,
-                    tempmin = it.night.tempmin,
-                    tempmax = it.night.tempmax,
-                    text = it.night.text,
-                    sea = it.night.sea,
-                    peipsi = it.night.peipsi
-                )
+                day = DayOrNightEntity.from(forecastModel = it, isDay = true),
+                night = DayOrNightEntity.from(forecastModel = it, isDay = false)
             )
 
             db.getForecastDao().insert(forecastEntity)
 
             it.day.places?.forEach { place ->
-                // TODO from
-                db.getForecastDao().insertPlace(
-                    PlaceEntity(
-                        date = it.date,
-                        isday = true,
-                        name = place.name,
-                        phenomenon = place.phenomenon,
-                        tempmin = place.tempmin,
-                        tempmax = place.tempmax
-                    )
-                )
+                db.getPlaceDao().insert(PlaceEntity.from(placeModel = place, date = it.date, isDay = true))
             }
 
             it.night.places?.forEach { place ->
-                // TODO from
-                db.getForecastDao().insertPlace(
-                    PlaceEntity(
-                        date = it.date,
-                        isday = false,
-                        name = place.name,
-                        phenomenon = place.phenomenon,
-                        tempmin = place.tempmin,
-                        tempmax = place.tempmax
-                    )
-                )
+                db.getPlaceDao().insert(PlaceEntity.from(placeModel = place, date = it.date, isDay = false))
             }
 
             it.day.winds?.forEach { wind ->
-                // TODO from
-                db.getForecastDao().insertWind(
-                    WindEntity(
-                        date = it.date,
-                        isday = true,
-                        name = wind.name,
-                        direction = wind.direction,
-                        speedmin = wind.speedmin,
-                        speedmax = wind.speedmax
-                    )
-                )
+                db.getWindDao().insert(WindEntity.from(windModel = wind, date = it.date, isDay = true))
             }
 
             it.night.winds?.forEach { wind ->
-                // TODO from
-                db.getForecastDao().insertWind(
-                    WindEntity(
-                        date = it.date,
-                        isday = false,
-                        name = wind.name,
-                        direction = wind.direction,
-                        speedmin = wind.speedmin,
-                        speedmax = wind.speedmax
-                    )
-                )
+                db.getWindDao().insert(WindEntity.from(windModel = wind, date = it.date, isDay = false))
             }
-
-
         }
     }
-
 }

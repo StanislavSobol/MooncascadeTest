@@ -21,7 +21,7 @@ data class DayOrNightModel(
     @SerializedName("sea") val sea: String?,
     @SerializedName("peipsi") val peipsi: String?,
     @SerializedName("places") val places: List<PlaceModel>?,
-    @SerializedName("winds") val winds: List<WindsResponse>?
+    @SerializedName("winds") val winds: List<WindModel>?
 )
 
 data class PlaceModel(
@@ -31,7 +31,7 @@ data class PlaceModel(
     @SerializedName("tempmax") val tempmax: Int?
 )
 
-data class WindsResponse(
+data class WindModel(
     @SerializedName("name") val name: String?,
     @SerializedName("direction") val direction: String?,
     @SerializedName("speedmin") val speedmin: Int?,
