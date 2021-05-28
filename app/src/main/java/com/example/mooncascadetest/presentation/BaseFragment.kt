@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -35,25 +35,27 @@ abstract class BaseFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val activity = requireActivity()
-        if (activity is AppCompatActivity) {
-            activity.supportActionBar?.let {
-                when (fragmentType) {
-                    FragmentType.Main -> {
-                        it.setDisplayHomeAsUpEnabled(false)
-                    }
-                    FragmentType.Child -> {
-                        it.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
-                        it.setDisplayHomeAsUpEnabled(true)
-                    }
+        mainActivity.supportActionBar?.let {
+            when (fragmentType) {
+                FragmentType.Main -> {
+                    it.setDisplayHomeAsUpEnabled(false)
+                }
+                FragmentType.Child -> {
+                    it.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+                    it.setDisplayHomeAsUpEnabled(true)
                 }
             }
         }
+
+        mainActivity.setToolbarSubTitle(provideToolbarSubTitleStringRes())
 
         injectDependencies()
     }
 
     protected abstract fun injectDependencies()
+
+    @StringRes
+    protected abstract fun provideToolbarSubTitleStringRes(): Int
 
     protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
         observe(viewLifecycleOwner, Observer { block.invoke(it) })

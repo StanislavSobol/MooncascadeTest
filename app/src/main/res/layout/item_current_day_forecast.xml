@@ -221,6 +221,16 @@
                 app:layout_constraintTop_toBottomOf="@id/nightSeaTextView"
                 tools:text="nightPeipsiTextView" />
 
+            <TextView
+                android:id="@+id/placesAndWindsButton"
+                style="@style/ItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:text="@string/places_and_winds"
+                app:layout_constraintTop_toBottomOf="@id/nightPeipsiTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

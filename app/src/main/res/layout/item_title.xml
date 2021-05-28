@@ -14,8 +14,8 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginStart="@dimen/small_medium_margin"
+            android:layout_marginLeft="@dimen/small_medium_margin"
             android:textAppearance="@style/TextTitle"
             tools:text="Title" />
 

@@ -101,6 +101,8 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
                 nightTextTextView.setTextWithVisibility(item.nightText)
                 nightSeaTextView.setTextWithVisibility(item.nightSea)
                 nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)
+
+                placesAndWindsButton.isVisible = item.isPlacesAndWindsExist
             }
         }
 
@@ -118,11 +120,13 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
 
                 nightPhenomenonTextView.setTextWithVisibility(item.nightPhenomenon)
                 nightTempTextView.setTextWithVisibility(item.nightTempRange)
-                nightMinTempWordsTextView.setTextWithVisibility(item.nightMinTempWords)
-                nightMaxTempWordsTextView.setTextWithVisibility(item.nightMaxTempWords)
+                nightMinTempWordsTextView.setTextWithVisibility(item.dayMinTempWords)
+                nightMaxTempWordsTextView.setTextWithVisibility(item.dayMaxTempWords)
                 nightTextTextView.setTextWithVisibility(item.nightText)
                 nightSeaTextView.setTextWithVisibility(item.nightSea)
                 nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)
+
+                placesAndWindsButton.isVisible = item.isPlacesAndWindsExist
             }
         }
 

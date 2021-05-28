@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MooncascadeTest</string>
+    <string name="app_name">Mooncascade Home Assignment</string>
+    <!--Titles-->
+    <string name="current_forecast">Current forecast</string>
 
     <!--Statuses-->
     <string name="offline">Offline. Reload when online again</string>
@@ -67,34 +69,6 @@
         <item>ninety</item>
     </string-array>
 
-    <!--    <string name="nun_20">twenty</string>-->
-    <!--    <string name="nun_30">thirty</string>-->
-    <!--    <string name="nun_40">forty</string>-->
-    <!--    <string name="nun_50">fifty</string>-->
-    <!--    <string name="nun_60">sixty</string>-->
-    <!--    <string name="nun_70">seventy</string>-->
-    <!--    <string name="nun_80">eighty</string>-->
-    <!--    <string name="nun_90">ninety</string>-->
-
-
-    <!--    <string name="nun_1">one</string>-->
-    <!--    <string name="nun_2">two</string>-->
-    <!--    <string name="nun_3">three</string>-->
-    <!--    <string name="nun_4">four</string>-->
-    <!--    <string name="nun_5">five</string>-->
-    <!--    <string name="nun_6">six</string>-->
-    <!--    <string name="nun_7">seven</string>-->
-    <!--    <string name="nun_8">eight</string>-->
-    <!--    <string name="nun_9">nine</string>-->
-    <!--    <string name="nun_10">ten</string>-->
-    <!--    <string name="nun_11">eleven</string>-->
-    <!--    <string name="nun_12">twelve</string>-->
-    <!--    <string name="nun_13">thirteen</string>-->
-    <!--    <string name="nun_14">fourteen</string>-->
-    <!--    <string name="nun_15">fifteen</string>-->
-    <!--    <string name="nun_16">sixteen</string>-->
-    <!--    <string name="nun_17">seventeen</string>-->
-    <!--    <string name="nun_18">eighteen</string>-->
-    <!--    <string name="nun_19">nineteen</string>-->
+    <string name="places_and_winds">Places and winds</string>
 
 </resources>

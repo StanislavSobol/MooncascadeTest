@@ -17,16 +17,11 @@
         <item name="android:textSize">@dimen/font_regular</item>
     </style>
 
-    <style name="DialogButton">
+    <style name="ItemButton">
         <item name="android:textSize">@dimen/font_big</item>
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:textColor">@android:color/holo_blue_dark</item>
         <item name="android:padding">@dimen/small_medium_margin</item>
     </style>
 
-    <style name="HorizontalSeparator">
-        <item name="android:background">@android:color/darker_gray</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-    </style>
 </resources>

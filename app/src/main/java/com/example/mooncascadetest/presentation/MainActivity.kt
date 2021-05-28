@@ -1,6 +1,7 @@
 package com.example.mooncascadetest.presentation
 
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.mooncascadetest.R
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             navigateToMainScreen()
         }
+    }
+
+    fun setToolbarSubTitle(@StringRes text: Int) {
+        binding.subtitleTextView.setText(text)
     }
 
     private fun navigateToMainScreen() {

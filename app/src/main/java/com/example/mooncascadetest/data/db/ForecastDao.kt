@@ -8,7 +8,7 @@ interface ForecastDao {
 
     @Transaction
     @Query("SELECT * FROM ForecastEntity")
-    fun selectAll(): LiveData<List<ForecastWithPlacesAdWinds>>
+    fun selectAll(): LiveData<List<ForecastWithPlacesAndWinds>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(forecast: ForecastEntity)

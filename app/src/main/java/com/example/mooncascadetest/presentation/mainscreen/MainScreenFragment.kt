@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_main_screen) {
 
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
@@ -33,21 +32,15 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
             .inject(this)
     }
 
+    override fun provideToolbarSubTitleStringRes() = R.string.current_forecast
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel.vehiclesLiveData.observe {
-//            Log.d("SSS", "Start it = ${it.size}")
-//            it.forEach { item ->
-//                Log.d("SSS", "item = $item")
-//            }
-//        }
-
         val adapter = MainScreenItemsAdapter().apply { itemOnClick = { } }
         binding.recyclerView.adapter = adapter
         viewModel.forecastLiveData.observe { adapter.setItems(it) }
