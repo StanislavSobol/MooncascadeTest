@@ -1,7 +1,9 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
 import androidx.annotation.VisibleForTesting
+import com.example.mooncascadetest.R
 import com.example.mooncascadetest.data.db.ForecastWithPlacesAdWinds
+import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import java.util.*
 
 interface MainScreenListItemDelegate {
@@ -31,19 +33,22 @@ data class DayForecastMainScreenListItem(
 
         fun from(
             type: MainScreenListItemDelegateType,
-            forecastWithPlacesAdWinds: ForecastWithPlacesAdWinds
+            forecastWithPlacesAdWinds: ForecastWithPlacesAdWinds,
+            resourceManager: ResourceManager
         ) = DayForecastMainScreenListItem(
             type = type,
             date = forecastWithPlacesAdWinds.forecast.date,
             dayPhenomenon = forecastWithPlacesAdWinds.forecast.day?.phenomenon ?: "",
             nightPhenomenon = forecastWithPlacesAdWinds.forecast.night?.phenomenon ?: "",
-            dayTempRange = tempRange(
+            dayTempRange = createTempRange(
                 forecastWithPlacesAdWinds.forecast.day?.tempmin,
-                forecastWithPlacesAdWinds.forecast.day?.tempmax
+                forecastWithPlacesAdWinds.forecast.day?.tempmax,
+                resourceManager
             ),
-            nightTempRange = tempRange(
+            nightTempRange = createTempRange(
                 forecastWithPlacesAdWinds.forecast.night?.tempmin,
-                forecastWithPlacesAdWinds.forecast.night?.tempmax
+                forecastWithPlacesAdWinds.forecast.night?.tempmax,
+                resourceManager
             ),
             dayText = forecastWithPlacesAdWinds.forecast.day?.text ?: "",
             nightText = forecastWithPlacesAdWinds.forecast.night?.text ?: "",
@@ -54,8 +59,21 @@ data class DayForecastMainScreenListItem(
         )
 
         @VisibleForTesting
-        internal fun tempRange(minTemp: Int?, maxTemp: Int?): String {
-            return ""
+        internal fun createTempRange(minTemp: Int?, maxTemp: Int?, resourceManager: ResourceManager): String {
+            if (minTemp == null && maxTemp == null) {
+                return ""
+            }
+
+            if (minTemp != null && maxTemp != null) {
+                val value = "$minTemp .. $maxTemp"
+                return resourceManager.getString(R.string.temp_range, value)
+            }
+
+            return when {
+                minTemp != null -> resourceManager.getString(R.string.temp_range, minTemp.toString())
+                maxTemp != null -> resourceManager.getString(R.string.temp_range, maxTemp.toString())
+                else -> throw IllegalStateException()
+            }
         }
     }
 }

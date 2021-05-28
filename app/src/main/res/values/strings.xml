@@ -7,9 +7,9 @@
     <string name="building_map">Building map data…</string>
     <string name="no_vehicle_data">No data for the vehicle for this day</string>
 
-
+    <string name="today">Today:</string>
+    <string name="next_days">Next days:</string>
     <string name="day">Day:</string>
     <string name="night">Night:</string>
-    <string name="current_day_temp">%d .. %d  \u00B0</string>
-
+    <string name="temp_range">%s \u00B0C</string>
 </resources>

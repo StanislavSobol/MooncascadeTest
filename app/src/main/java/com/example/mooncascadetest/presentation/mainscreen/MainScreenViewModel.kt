@@ -1,40 +1,40 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.mooncascadetest.data.db.ForecastWithPlacesAdWinds
+import com.example.mooncascadetest.R
 import com.example.mooncascadetest.domain.mainscreen.MainScreenInteractor
 import com.example.mooncascadetest.presentation.BaseViewModel
+import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import javax.inject.Inject
 
-class MainScreenViewModel @Inject constructor(private val mainScreenInteractor: MainScreenInteractor) :
-    BaseViewModel() {
-
-    val vehiclesLiveData: LiveData<List<ForecastWithPlacesAdWinds>> = mainScreenInteractor.getForecastLiveData()
-//        Transformations.map(mainScreenInteractor.getForecastLiveData()) { VehicleItem.listFromList(it, resourceManager) }
+class MainScreenViewModel @Inject constructor(
+    private val mainScreenInteractor: MainScreenInteractor,
+    private val resourceManager: ResourceManager
+) : BaseViewModel() {
 
     val forecastLiveData: LiveData<List<MainScreenListItemDelegate>> =
         Transformations.map(mainScreenInteractor.getForecastLiveData()) {
             val result = mutableListOf<MainScreenListItemDelegate>()
-
             it.forEachIndexed { index, forecastWithPlacesAdWinds ->
                 if (index == 0) {
+                    result.add(TitleMainScreenLisItem(resourceManager.getString(R.string.today)))
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.CURRENT,
-                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds
+                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds,
+                            resourceManager = resourceManager
                         )
                     )
                     if (it.size > 1) {
-                        // TODO Res
-                        result.add(TitleMainScreenLisItem("Titol"))
+                        result.add(TitleMainScreenLisItem(resourceManager.getString(R.string.next_days)))
                     }
                 } else {
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.FUTURE,
-                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds
+                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds,
+                            resourceManager = resourceManager
                         )
                     )
                 }
@@ -44,9 +44,7 @@ class MainScreenViewModel @Inject constructor(private val mainScreenInteractor: 
 
     init {
         launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
-            Log.d("SSS", "MainScreenViewModel init")
             mainScreenInteractor.requestForecast()
         }
     }
-
 }
