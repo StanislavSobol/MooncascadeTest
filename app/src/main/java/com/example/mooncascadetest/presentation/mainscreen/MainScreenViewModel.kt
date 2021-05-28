@@ -13,8 +13,16 @@ class MainScreenViewModel @Inject constructor(
     private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 
-    val forecastLiveData: LiveData<List<MainScreenListItemDelegate>> =
-        Transformations.map(mainScreenInteractor.getForecastLiveData()) {
+    val forecastLiveData: LiveData<List<MainScreenListItemDelegate>> = getTransformedLiveData()
+
+    init {
+        launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
+            mainScreenInteractor.requestForecast()
+        }
+    }
+
+    private fun getTransformedLiveData(): LiveData<List<MainScreenListItemDelegate>> {
+        return Transformations.map(mainScreenInteractor.getForecastLiveData()) {
             val result = mutableListOf<MainScreenListItemDelegate>()
             it.forEachIndexed { index, forecastWithPlacesAndWinds ->
                 if (index == 0) {
@@ -40,11 +48,6 @@ class MainScreenViewModel @Inject constructor(
                 }
             }
             result
-        }
-
-    init {
-        launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
-            mainScreenInteractor.requestForecast()
         }
     }
 }
