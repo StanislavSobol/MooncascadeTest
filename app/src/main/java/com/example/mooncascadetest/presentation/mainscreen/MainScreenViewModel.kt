@@ -16,13 +16,13 @@ class MainScreenViewModel @Inject constructor(
     val forecastLiveData: LiveData<List<MainScreenListItemDelegate>> =
         Transformations.map(mainScreenInteractor.getForecastLiveData()) {
             val result = mutableListOf<MainScreenListItemDelegate>()
-            it.forEachIndexed { index, forecastWithPlacesAdWinds ->
+            it.forEachIndexed { index, forecastWithPlacesAndWinds ->
                 if (index == 0) {
                     result.add(TitleMainScreenLisItem(resourceManager.getString(R.string.today)))
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.CURRENT,
-                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds,
+                            forecastWithPlacesAndWinds = forecastWithPlacesAndWinds,
                             resourceManager = resourceManager
                         )
                     )
@@ -33,7 +33,7 @@ class MainScreenViewModel @Inject constructor(
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.FUTURE,
-                            forecastWithPlacesAdWinds = forecastWithPlacesAdWinds,
+                            forecastWithPlacesAndWinds = forecastWithPlacesAndWinds,
                             resourceManager = resourceManager
                         )
                     )
