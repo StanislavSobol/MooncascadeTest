@@ -84,8 +84,6 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
         // TODO bindCurrentDateItem + bindFutureDateItem ?
         private fun bindCurrentDateItem(item: DayForecastMainScreenListItem, binding: ItemCurrentDayForecastBinding) {
             with(binding) {
-                // TODO date
-                //dateTextView.text = item.date.toString()
                 dateTextView.text = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(item.date)
 
                 dayPhenomenonTextView.setTextWithVisibility(item.dayPhenomenon)
@@ -104,8 +102,19 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
 
         private fun bindFutureDateItem(item: DayForecastMainScreenListItem, binding: ItemFutureDayForecastBinding) {
             with(binding) {
-                // TODO date
-                binding.dateTextView.text = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(item.date)
+                dateTextView.text = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(item.date)
+
+                dayPhenomenonTextView.setTextWithVisibility(item.dayPhenomenon)
+                dayTempTextView.setTextWithVisibility(item.dayTempRange)
+                dayTextTextView.setTextWithVisibility(item.dayText)
+                daySeaTextView.setTextWithVisibility(item.daySea)
+                dayPeipsiTextView.setTextWithVisibility(item.dayPeipsi)
+
+                nightPhenomenonTextView.setTextWithVisibility(item.nightPhenomenon)
+                nightTempTextView.setTextWithVisibility(item.nightTempRange)
+                nightTextTextView.setTextWithVisibility(item.nightText)
+                nightSeaTextView.setTextWithVisibility(item.nightSea)
+                nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)
             }
         }
 
