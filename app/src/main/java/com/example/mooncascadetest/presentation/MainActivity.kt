@@ -1,17 +1,19 @@
 package com.example.mooncascadetest.presentation
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.databinding.ActivityMainBinding
 import com.example.mooncascadetest.presentation.mainscreen.MainScreenFragment
+import com.example.mooncascadetest.presentation.placesandwinds.PlacesAndWindsFragment
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,16 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             hideStatus()
         } else {
-            navigateToMainScreen()
+            toMainScreen()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == android.R.id.home) {
+            supportFragmentManager.popBackStack()
+            true
+        } else {
+            false
         }
     }
 
@@ -30,7 +41,15 @@ class MainActivity : AppCompatActivity() {
         binding.subtitleTextView.setText(text)
     }
 
-    private fun navigateToMainScreen() {
+    fun toPlacesAndWindsScreen(date: Date) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.containerLayout, PlacesAndWindsFragment.newInstance(date))
+            .addToBackStack(null)
+            .commitAllowingStateLoss()
+    }
+
+    private fun toMainScreen() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.containerLayout, MainScreenFragment.newInstance())

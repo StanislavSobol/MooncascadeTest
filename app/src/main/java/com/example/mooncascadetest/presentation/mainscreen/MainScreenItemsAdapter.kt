@@ -16,7 +16,7 @@ import java.util.*
 class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holder>() {
 
     // TODO !!!
-    var itemOnClick: ((Int) -> (Unit))? = null
+    var placesAndWindsOnClick: ((Date) -> (Unit))? = null
 
     private val items = mutableListOf<MainScreenListItemDelegate>()
 
@@ -106,6 +106,7 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
                 nightPeipsiTextView.setTextWithVisibility(item.nightPeipsi)
 
                 placesAndWindsButton.isVisible = item.isPlacesAndWindsExist
+                placesAndWindsButton.setOnClickListener { placesAndWindsOnClick?.invoke(item.date) }
             }
         }
 

@@ -13,9 +13,6 @@ import com.example.mooncascadetest.R
 
 /**
  * Class to store all common features for diff. classes placed on MainActivity.
- *
- * No need to keep all constructor-passed parameters in arguments
- * because the default constructor is called from every child empty constructor every time the child fragment is recreated
  */
 abstract class BaseFragment(
     private val fragmentType: FragmentType,
@@ -25,6 +22,7 @@ abstract class BaseFragment(
     protected val mainActivity: MainActivity
         get() = requireActivity() as MainActivity
 
+    // TODO Get binding from here
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
