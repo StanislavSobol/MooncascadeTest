@@ -1,5 +1,6 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -43,6 +44,8 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
     override fun getItemViewType(position: Int) = items[position].type.type
 
     fun setItems(items: List<MainScreenListItemDelegate>) {
+        Log.d("SSS", "setItems ${items.size}")
+
         this.items.run {
             clear()
             addAll(items)

@@ -44,6 +44,7 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
         val adapter = MainScreenItemsAdapter().apply { itemOnClick = { } }
         binding.recyclerView.adapter = adapter
         viewModel.forecastLiveData.observe { adapter.setItems(it) }
+      //  viewModel.forecastLiveData.removeObservers()
     }
 
     companion object {

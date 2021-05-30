@@ -8,8 +8,8 @@ import androidx.room.Query
 @Dao
 interface PlaceDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(place: PlaceEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(placeEntities: List<PlaceEntity>)
 
     @Query("DELETE FROM PlaceEntity")
     fun deleteAll()

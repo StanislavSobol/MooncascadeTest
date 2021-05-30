@@ -52,8 +52,8 @@ data class DayOrNightEntity(
     )]
 )
 data class PlaceEntity(
-    @PrimaryKey(autoGenerate = true)
-    val placeId: Int = 0,
+    @PrimaryKey
+    val placeId: Int,
     val date: Date,
     val isday: Boolean,
     val name: String?,
@@ -62,7 +62,8 @@ data class PlaceEntity(
     val tempmax: Int?
 ) {
     companion object {
-        fun from(placeModel: PlaceModel, date: Date, isDay: Boolean) = PlaceEntity(
+        fun from(placeModel: PlaceModel, placeId: Int, date: Date, isDay: Boolean) = PlaceEntity(
+            placeId = placeId,
             date = date,
             isday = isDay,
             name = placeModel.name,
@@ -82,8 +83,8 @@ data class PlaceEntity(
     )]
 )
 data class WindEntity(
-    @PrimaryKey(autoGenerate = true)
-    val windId: Int = 0,
+    @PrimaryKey
+    val windId: Int,
     val date: Date,
     val isday: Boolean,
     val name: String?,
@@ -92,7 +93,8 @@ data class WindEntity(
     val speedmax: Int?
 ) {
     companion object {
-        fun from(windModel: WindModel, date: Date, isDay: Boolean) = WindEntity(
+        fun from(windModel: WindModel, windId: Int, date: Date, isDay: Boolean) = WindEntity(
+            windId = windId,
             date = date,
             isday = isDay,
             name = windModel.name,

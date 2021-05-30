@@ -8,8 +8,8 @@ import androidx.room.Query
 @Dao
 interface WindDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(places: WindEntity)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(windEntities: List<WindEntity>)
 
     @Query("DELETE FROM WindEntity")
     fun deleteAll()
