@@ -13,6 +13,14 @@
         <item name="android:textSize">@dimen/font_big</item>
     </style>
 
+    <style name="TextBig.Toolbar">
+        <item name="android:textColor">@color/mc_yellow</item>
+    </style>
+
+    <style name="TextBig.Toolbar.Small">
+        <item name="android:textSize">@dimen/small_medium_margin</item>
+    </style>
+
     <style name="TextRegular">
         <item name="android:textSize">@dimen/font_regular</item>
     </style>

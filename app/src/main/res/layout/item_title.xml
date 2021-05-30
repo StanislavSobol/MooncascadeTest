@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/titleTextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/smaller_margin">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/medium_margin">
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_medium_margin"
-            android:layout_marginLeft="@dimen/small_medium_margin"
-            android:textAppearance="@style/TextTitle"
-            tools:text="Title" />
-
-    </androidx.cardview.widget.CardView>
-</FrameLayout>
+    android:textColor="@color/mc_yellow"
+    android:background="@null"
+    android:layout_marginStart="@dimen/small_medium_margin"
+    android:layout_marginLeft="@dimen/small_medium_margin"
+    android:padding="@dimen/smaller_margin"
+    android:textAppearance="@style/TextTitle"
+    tools:text="Title" />

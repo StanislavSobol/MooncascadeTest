@@ -6,57 +6,55 @@
     android:orientation="vertical"
     tools:context=".presentation.MainActivity">
 
-  <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:background="?attr/colorPrimary">
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/small_margin"
-        android:paddingBottom="@dimen/small_margin"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
 
-      <TextView
-          android:id="@+id/titleTextView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/app_name"
-          android:textColor="@color/white"
-          android:textAppearance="@style/TextBig" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/small_margin"
+            android:paddingBottom="@dimen/small_margin">
 
-      <TextView
-          android:layout_marginTop="@dimen/small_margin"
-          android:id="@+id/subtitleTextView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="@color/white"
-          android:text="@string/app_name"
-          android:textAppearance="@style/TextRegular" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextBig.Toolbar" />
 
-  </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/subtitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextBig.Toolbar.Small" />
+        </LinearLayout>
 
-  <TextView
-      android:id="@+id/statusTextView"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/smaller_margin"
-      android:background="@color/online_green"
-      android:gravity="center"
-      android:padding="@dimen/smaller_margin"
-      android:textAppearance="@style/TextBig"
-      android:textColor="@color/white"
-      android:visibility="gone"
-      tools:text="@string/loading"
-      tools:visibility="visible" />
+    </androidx.appcompat.widget.Toolbar>
 
-  <FrameLayout
-      android:id="@+id/containerLayout"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/statusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/smaller_margin"
+        android:background="@color/online_green"
+        android:gravity="center"
+        android:padding="@dimen/smaller_margin"
+        android:textAppearance="@style/TextBig"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        tools:text="@string/loading"
+        tools:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/containerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
 
