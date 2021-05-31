@@ -105,4 +105,8 @@ class RepositoryImpl(
     override fun getPlacesForDate(date: Date) = db.getPlaceDao().selectForDate(date)
 
     override fun getWindsForDate(date: Date) = db.getWindDao().selectForDate(date)
+
+    override fun getPlaceEntityById(placeId: Long) = db.getPlaceDao().getByPlaceId(placeId)
+
+    override fun getWindEntityById(windId: Long) = db.getWindDao().getByWindId(windId)
 }

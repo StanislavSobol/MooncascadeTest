@@ -22,4 +22,7 @@ interface WindDao {
 
     @Query("SELECT * FROM WindEntity WHERE date=:date ORDER BY windId")
     fun selectForDate(date: Date): List<WindEntity>
+
+    @Query("SELECT * FROM WindEntity WHERE windId =:windId")
+    fun getByWindId(windId: Long): WindEntity
 }

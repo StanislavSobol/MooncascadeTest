@@ -16,11 +16,11 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return when (viewType) {
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE.type,
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND.type -> Holder(
+            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE.typeInt,
+            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND.typeInt -> Holder(
                 ItemPlaceAndWindBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE.type -> Holder(
+            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE.typeInt -> Holder(
                 ItemTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             else -> throw IllegalStateException("Cannot create a Holder: unknown type of PlaceAndWindsItemDelegateType")
@@ -33,7 +33,7 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
         holder.bind(items[position])
     }
 
-    override fun getItemViewType(position: Int) = items[position].type.type
+    override fun getItemViewType(position: Int) = items[position].type.typeInt
 
     fun setItems(items: List<PlaceAndWindsItemDelegate>) {
         this.items.run {

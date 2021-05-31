@@ -16,9 +16,13 @@ interface PlaceDao {
     @Query("DELETE FROM PlaceEntity")
     fun deleteAll()
 
+    @Deprecated("selectForDate")
     @Query("SELECT * FROM PlaceEntity WHERE date=:date ORDER BY placeId")
     fun selectForDateLiveData(date: Date): LiveData<List<PlaceEntity>>
 
     @Query("SELECT * FROM PlaceEntity WHERE date=:date ORDER BY placeId")
     fun selectForDate(date: Date): List<PlaceEntity>
+
+    @Query("SELECT * FROM PlaceEntity WHERE placeId = :placeId")
+    fun getByPlaceId(placeId: Long): PlaceEntity
 }

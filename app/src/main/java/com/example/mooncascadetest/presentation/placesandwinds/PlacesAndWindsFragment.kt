@@ -1,7 +1,6 @@
 package com.example.mooncascadetest.presentation.placesandwinds
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +39,7 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragmen
         binding.recyclerView.adapter = adapter
         viewModel.placesAndWindsLiveData.observe { adapter.setItems(it) }
         viewModel.toPlaceOrWindDetailEvent.observe {
-            it.getContentIfNotHandled()?.let {
-                Log.d("SSS", "observed $it")
-            }
+            it.getContentIfNotHandled()?.let { mainActivity.toPlaceOrWIndScreen(it.type.typeInt, it.id) }
         }
     }
 
@@ -52,7 +49,7 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragmen
             .date(
                 Date().apply {
                     time = arguments?.getLong(ARG_DATE)
-                        ?: throw IllegalStateException("Data has not been passed to the fragment")
+                        ?: throw IllegalStateException("Wrong or not found argument: date")
                 }
             )
             .build()

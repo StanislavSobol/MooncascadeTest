@@ -21,4 +21,8 @@ interface Repository {
     fun getPlacesForDate(date: Date): List<PlaceEntity>
 
     fun getWindsForDate(date: Date): List<WindEntity>
+
+    fun getPlaceEntityById(placeId: Long): PlaceEntity
+
+    fun getWindEntityById(windId: Long): WindEntity
 }

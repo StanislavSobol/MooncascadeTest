@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.databinding.ActivityMainBinding
 import com.example.mooncascadetest.presentation.mainscreen.MainScreenFragment
+import com.example.mooncascadetest.presentation.placeorwind.PlaceOrWindFragment
 import com.example.mooncascadetest.presentation.placesandwinds.PlacesAndWindsFragment
 import java.util.*
 
@@ -46,6 +47,15 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.containerLayout, PlacesAndWindsFragment.newInstance(date))
+            .addToBackStack(null)
+            .commitAllowingStateLoss()
+    }
+
+    // TODO Add a custom animation
+    fun toPlaceOrWIndScreen(typeInt: Int, id: Long) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.containerLayout, PlaceOrWindFragment.newInstance(typeInt, id))
             .addToBackStack(null)
             .commitAllowingStateLoss()
     }

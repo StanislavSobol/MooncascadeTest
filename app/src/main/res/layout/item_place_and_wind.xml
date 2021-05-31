@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:src="@drawable/ic_baseline_location_city_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
             android:textAppearance="@style/TextRegular"
             app:layout_constraintBaseline_toBaselineOf="@id/dayTitleTextView"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            tools:text="nightRangeTextView" />
+            tools:text="dayRangeTextView" />
 
         <TextView
             android:id="@+id/nightTitleTextView"

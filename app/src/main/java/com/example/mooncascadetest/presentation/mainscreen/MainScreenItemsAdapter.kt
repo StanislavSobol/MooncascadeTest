@@ -3,13 +3,13 @@ package com.example.mooncascadetest.presentation.mainscreen
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.mooncascadetest.databinding.ItemCurrentDayForecastBinding
 import com.example.mooncascadetest.databinding.ItemFutureDayForecastBinding
 import com.example.mooncascadetest.databinding.ItemTitleBinding
+import com.example.mooncascadetest.tools.setTextWithVisibility
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -136,13 +136,6 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
 
         private fun bindTitleDateItem(item: TitleMainScreenLisItem, binding: ItemTitleBinding) {
             binding.titleTextView.text = item.title
-        }
-
-        private fun TextView.setTextWithVisibility(text: String) {
-            if (text.isNotBlank()) {
-                this.text = text
-            }
-            isVisible = text.isNotBlank()
         }
     }
 

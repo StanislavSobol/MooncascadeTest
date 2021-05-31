@@ -12,7 +12,8 @@ interface PlaceAndWindsItemDelegate {
 
     val type: PlaceAndWindsItemDelegateType
 
-    enum class PlaceAndWindsItemDelegateType(val type: Int) {
+    // TODO to root
+    enum class PlaceAndWindsItemDelegateType(val typeInt: Int) {
         TITLE(0), PLACE(1), WIND(2)
     }
 }
@@ -87,8 +88,8 @@ data class WindItem(
                 resourceManager = resourceManager
             ),
             nightRange = createWindRange(
-                min = windEntity.daySpeedMin,
-                max = windEntity.daySpeedMax,
+                min = windEntity.nightSpeedMin,
+                max = windEntity.nightSpeedMax,
                 resourceManager = resourceManager
             )
         )

@@ -3,6 +3,7 @@
     <!--Titles-->
     <string name="current_forecast">Current forecast</string>
     <string name="places_and_winds">Places and winds</string>
+    <string name="place_or_wind">Details</string>
 
     <!--Statuses-->
     <string name="offline">Offline. Reload when online again</string>
