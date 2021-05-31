@@ -4,10 +4,10 @@
     android:id="@+id/titleTextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@color/mc_yellow"
-    android:background="@null"
     android:layout_marginStart="@dimen/small_medium_margin"
     android:layout_marginLeft="@dimen/small_medium_margin"
+    android:background="@null"
     android:padding="@dimen/smaller_margin"
-    android:textAppearance="@style/TextTitle"
+    android:textAppearance="@style/TextBig"
+    android:textColor="@color/mc_yellow"
     tools:text="Title" />

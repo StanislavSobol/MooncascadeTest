@@ -1,9 +1,8 @@
 package com.example.mooncascadetest.data.repo
 
 import com.example.mooncascadetest.R
+import com.example.mooncascadetest.data.api.ForecastModel
 import com.example.mooncascadetest.data.api.MoonCascadeApi
-import com.example.mooncascadetest.data.api.PlaceModel
-import com.example.mooncascadetest.data.api.WindModel
 import com.example.mooncascadetest.data.db.*
 import com.example.mooncascadetest.tools.MoonCascadeException
 import com.example.mooncascadetest.tools.onlinenfoprovider.OnlineInfoProvider
@@ -36,12 +35,8 @@ class RepositoryImpl(
             )
 
             forecastEntities.add(forecastEntity)
-
-            placesEntities.addAll(createAllPlaceEntities(places = it.day.places, date = it.date, isDay = true))
-            placesEntities.addAll(createAllPlaceEntities(places = it.night.places, date = it.date, isDay = false))
-
-            windsEntities.addAll(createAllWinEntities(winds = it.day.winds, date = it.date, isDay = true))
-            windsEntities.addAll(createAllWinEntities(winds = it.night.winds, date = it.date, isDay = false))
+            placesEntities.addAll(createPlacesEntitiesFromForecastModel(it))
+            windsEntities.addAll(createWindsEntitiesFromForecastModel(it))
         }
 
         with(db) {
@@ -55,6 +50,54 @@ class RepositoryImpl(
         }
     }
 
+    private fun createPlacesEntitiesFromForecastModel(forecastModel: ForecastModel): List<PlaceEntity> {
+        val result = mutableListOf<PlaceEntity>()
+        forecastModel.day.places?.forEach { dayPlace ->
+            var placeEntity: PlaceEntity? = null
+            forecastModel.night.places?.find { item -> dayPlace.name == item.name }?.let { foundNightItem ->
+                placeEntity = PlaceEntity(
+                    date = forecastModel.date,
+                    name = dayPlace.name,
+                    dayPhenomenon = dayPlace.phenomenon,
+                    dayTempMin = dayPlace.tempmin,
+                    dayTempMax = dayPlace.tempmax,
+                    nightPhenomenon = foundNightItem.phenomenon,
+                    nightTempMin = foundNightItem.tempmin,
+                    nightTempMax = foundNightItem.tempmax
+                )
+            } ?: run {
+                placeEntity = PlaceEntity.fromDay(dayPlace, forecastModel.date)
+            }
+
+            placeEntity?.let { item -> result.add(item) }
+        }
+        return result
+    }
+
+    private fun createWindsEntitiesFromForecastModel(forecastModel: ForecastModel): List<WindEntity> {
+        val result = mutableListOf<WindEntity>()
+        forecastModel.day.winds?.forEach { dayWind ->
+            var windEntity: WindEntity? = null
+            forecastModel.night.winds?.find { item -> dayWind.name == item.name }?.let { foundNightItem ->
+                windEntity = WindEntity(
+                    date = forecastModel.date,
+                    name = dayWind.name,
+                    dayDirection = dayWind.direction,
+                    daySpeedMin = dayWind.speedmin,
+                    daySpeedMax = dayWind.speedmax,
+                    nightDirection = foundNightItem.direction,
+                    nightSpeedMin = foundNightItem.speedmin,
+                    nightSpeedMax = foundNightItem.speedmax
+                )
+            } ?: run {
+                windEntity = WindEntity.fromDay(dayWind, forecastModel.date)
+            }
+
+            windEntity?.let { item -> result.add(item) }
+        }
+        return result
+    }
+
     override fun getPlacesForDateLiveData(date: Date) = db.getPlaceDao().selectForDateLiveData(date)
 
     override fun getWindsForDateLiveData(date: Date) = db.getWindDao().selectForDateLiveData(date)
@@ -62,20 +105,4 @@ class RepositoryImpl(
     override fun getPlacesForDate(date: Date) = db.getPlaceDao().selectForDate(date)
 
     override fun getWindsForDate(date: Date) = db.getWindDao().selectForDate(date)
-
-    private fun createAllPlaceEntities(places: List<PlaceModel>?, date: Date, isDay: Boolean): List<PlaceEntity> {
-        val result = mutableListOf<PlaceEntity>()
-        places?.forEachIndexed { index, place ->
-            result.add(PlaceEntity.from(placeModel = place, placeId = index, date = date, isDay = isDay))
-        }
-        return result
-    }
-
-    private fun createAllWinEntities(winds: List<WindModel>?, date: Date, isDay: Boolean): List<WindEntity> {
-        val result = mutableListOf<WindEntity>()
-        winds?.forEachIndexed { index, wind ->
-            result.add(WindEntity.from(windModel = wind, windId = index, date = date, isDay = isDay))
-        }
-        return result
-    }
 }

@@ -52,24 +52,27 @@ data class DayOrNightEntity(
     )]
 )
 data class PlaceEntity(
-    @PrimaryKey
-    val placeId: Int,
+    @PrimaryKey(autoGenerate = true)
+    val placeId: Long = 0L,
     val date: Date,
-    val isday: Boolean,
     val name: String?,
-    val phenomenon: String?,
-    val tempmin: Int?,
-    val tempmax: Int?
+    val dayPhenomenon: String?,
+    val dayTempMin: Int?,
+    val dayTempMax: Int?,
+    val nightPhenomenon: String? = null,
+    val nightTempMin: Int? = null,
+    val nightTempMax: Int? = null
 ) {
     companion object {
-        fun from(placeModel: PlaceModel, placeId: Int, date: Date, isDay: Boolean) = PlaceEntity(
-            placeId = placeId,
+        /***
+         * If night data is absent
+         */
+        fun fromDay(dayPlaceModel: PlaceModel, date: Date) = PlaceEntity(
             date = date,
-            isday = isDay,
-            name = placeModel.name,
-            phenomenon = placeModel.phenomenon,
-            tempmin = placeModel.tempmin,
-            tempmax = placeModel.tempmax
+            name = dayPlaceModel.name,
+            dayPhenomenon = dayPlaceModel.phenomenon,
+            dayTempMin = dayPlaceModel.tempmin,
+            dayTempMax = dayPlaceModel.tempmax
         )
     }
 }
@@ -83,24 +86,24 @@ data class PlaceEntity(
     )]
 )
 data class WindEntity(
-    @PrimaryKey
-    val windId: Int,
+    @PrimaryKey(autoGenerate = true)
+    val windId: Long = 0,
     val date: Date,
-    val isday: Boolean,
     val name: String?,
-    val direction: String?,
-    val speedmin: Int?,
-    val speedmax: Int?
+    val dayDirection: String?,
+    val daySpeedMin: Int?,
+    val daySpeedMax: Int?,
+    val nightDirection: String? = null,
+    val nightSpeedMin: Int?? = null,
+    val nightSpeedMax: Int? = null
 ) {
     companion object {
-        fun from(windModel: WindModel, windId: Int, date: Date, isDay: Boolean) = WindEntity(
-            windId = windId,
+        fun fromDay(dayWindModel: WindModel, date: Date) = WindEntity(
             date = date,
-            isday = isDay,
-            name = windModel.name,
-            direction = windModel.direction,
-            speedmin = windModel.speedmin,
-            speedmax = windModel.speedmax
+            name = dayWindModel.name,
+            dayDirection = dayWindModel.direction,
+            daySpeedMin = dayWindModel.speedmin,
+            daySpeedMax = dayWindModel.speedmax
         )
     }
 }

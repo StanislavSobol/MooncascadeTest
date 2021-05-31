@@ -19,7 +19,7 @@ private fun createRange(min: Int?, max: Int?, resourceManager: ResourceManager, 
 
     if (min != null && max != null) {
         val value = "$min .. $max"
-        return resourceManager.getString(R.string.temp_range, value)
+        return resourceManager.getString(stringRes, value)
     }
 
     return when {

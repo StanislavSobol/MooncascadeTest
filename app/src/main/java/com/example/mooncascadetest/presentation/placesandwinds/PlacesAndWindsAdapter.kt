@@ -4,15 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.example.mooncascadetest.R
 import com.example.mooncascadetest.databinding.ItemPlaceAndWindBinding
 import com.example.mooncascadetest.databinding.ItemTitleBinding
 
 class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>() {
 
     var itemOnClick: ((BasePlaceAndWindItem) -> (Unit))? = null
-//    var itemOnClick: ((PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType, Int) -> (Unit))? = null
-//    var placeOnClick: ((Int) -> (Unit))? = null
-//    var windOnClick: ((Int) -> (Unit))? = null
 
     private val items = mutableListOf<PlaceAndWindsItemDelegate>()
 
@@ -67,18 +65,19 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
         }
 
         private fun bindItem(item: BasePlaceAndWindItem, binding: ItemPlaceAndWindBinding) {
-            binding.nameTextView.text = item.name
-            binding.rangeTextView.text = item.range
-            itemView.setOnClickListener { itemOnClick?.invoke(item) }
-//            when (item.type) {
-//                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE ->
-//                    itemView.setOnClickListener { placeOnClick?.invoke(item.id) }
-//                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND ->
-//                    itemView.setOnClickListener { windOnClick?.invoke(item.id) }
-//                else -> {
-//                    throw java.lang.IllegalStateException("Wrong type to set the item click listener")
-//                }
-//            }
+            with(binding) {
+                nameTextView.text = item.name
+                dayRangeTextView.text = item.dayRange
+                nightRangeTextView.text = item.nightRange
+                imageView.setImageResource(
+                    if (item.type == PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND) {
+                        R.drawable.ic_baseline_call_made_24
+                    } else {
+                        R.drawable.ic_baseline_location_city_24
+                    }
+                )
+                itemView.setOnClickListener { itemOnClick?.invoke(item) }
+            }
         }
 
         private fun bindTitleDate(item: TitlePlaceAndWindsLisItem, binding: ItemTitleBinding) {

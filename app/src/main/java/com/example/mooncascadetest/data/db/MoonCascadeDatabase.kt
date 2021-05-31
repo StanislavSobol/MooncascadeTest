@@ -5,7 +5,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.room.*
 import java.util.*
 
-@Database(entities = [ForecastEntity::class, PlaceEntity::class, WindEntity::class], version = 12)
+@Database(entities = [ForecastEntity::class, PlaceEntity::class, WindEntity::class], version = 15)
 @TypeConverters(Converters::class)
 abstract class MoonCascadeDatabase : RoomDatabase() {
 

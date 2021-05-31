@@ -1,6 +1,7 @@
 package com.example.mooncascadetest.presentation.placesandwinds
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,18 +36,13 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = PlacesAndWindsAdapter().apply {
-            itemOnClick = { viewModel.onItemClicked(it) }
-//            placeOnClick = { viewModel.onPlaceClicked(it) }
-//            windOnClick = {viewModel.onWindClicked(it) }
-        }
+        val adapter = PlacesAndWindsAdapter().apply { itemOnClick = { viewModel.onItemClicked(it) } }
         binding.recyclerView.adapter = adapter
-        viewModel.placesAndWindsLiveData.observe {
-            it.find { item -> item == null } ?: run {
-                adapter.setItems(it.subList(1, it.size))
+        viewModel.placesAndWindsLiveData.observe { adapter.setItems(it) }
+        viewModel.toPlaceOrWindDetailEvent.observe {
+            it.getContentIfNotHandled()?.let {
+                Log.d("SSS", "observed $it")
             }
-
-            adapter.setItems(it)
         }
     }
 

@@ -19,21 +19,28 @@ interface PlaceAndWindsItemDelegate {
 
 abstract class BasePlaceAndWindItem(
     private val providedType: PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType,
-    open val id: Int,
+    open val id: Long,
     open val name: String,
-    open val range: String
+    open val dayRange: String,
+    open val nightRange: String
 ) : PlaceAndWindsItemDelegate {
 
     override val type: PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType
         get() = providedType
 }
 
-data class PlaceItem(override val id: Int, override val name: String, override val range: String) :
+data class PlaceItem(
+    override val id: Long,
+    override val name: String,
+    override val dayRange: String,
+    override val nightRange: String
+) :
     BasePlaceAndWindItem(
         providedType = PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE,
         id = id,
         name = name,
-        range = range
+        dayRange = dayRange,
+        nightRange = nightRange
     ) {
 
     companion object {
@@ -41,30 +48,47 @@ data class PlaceItem(override val id: Int, override val name: String, override v
         fun from(placeEntity: PlaceEntity, resourceManager: ResourceManager) = PlaceItem(
             id = placeEntity.placeId,
             name = placeEntity.name ?: EMPTY_STRING,
-            range = createTempRange(
-                min = placeEntity.tempmin,
-                max = placeEntity.tempmax,
+            dayRange = createTempRange(
+                min = placeEntity.dayTempMin,
+                max = placeEntity.dayTempMax,
+                resourceManager = resourceManager
+            ),
+            nightRange = createTempRange(
+                min = placeEntity.nightTempMin,
+                max = placeEntity.nightTempMax,
                 resourceManager = resourceManager
             )
         )
     }
 }
 
-data class WindItem(override val id: Int, override val name: String, override val range: String) : BasePlaceAndWindItem(
-    providedType = PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND,
-    id = id,
-    name = name,
-    range = range
-) {
+data class WindItem(
+    override val id: Long,
+    override val name: String,
+    override val dayRange: String,
+    override val nightRange: String
+) :
+    BasePlaceAndWindItem(
+        providedType = PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND,
+        id = id,
+        name = name,
+        dayRange = dayRange,
+        nightRange = nightRange
+    ) {
 
     companion object {
 
         fun from(windEntity: WindEntity, resourceManager: ResourceManager) = WindItem(
             id = windEntity.windId,
             name = windEntity.name ?: EMPTY_STRING,
-            range = createWindRange(
-                min = windEntity.speedmin,
-                max = windEntity.speedmax,
+            dayRange = createWindRange(
+                min = windEntity.daySpeedMin,
+                max = windEntity.daySpeedMax,
+                resourceManager = resourceManager
+            ),
+            nightRange = createWindRange(
+                min = windEntity.daySpeedMin,
+                max = windEntity.daySpeedMax,
                 resourceManager = resourceManager
             )
         )

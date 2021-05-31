@@ -8,22 +8,80 @@
     app:cardCornerRadius="@dimen/card_radius"
     app:cardElevation="@dimen/card_elevation">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="@dimen/small_medium_margin">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_location_city_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="nameTextView" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="dayTitleTextView,nightTitleTextView" />
+
         <TextView
-            android:id="@+id/rangeTextView"
+            android:id="@+id/dayTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="rangeTextView" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:text="@string/day"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="@id/nameTextView"
+            app:layout_constraintTop_toBottomOf="@id/nameTextView" />
+
+        <TextView
+            android:id="@+id/dayRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintBaseline_toBaselineOf="@id/dayTitleTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            tools:text="nightRangeTextView" />
+
+        <TextView
+            android:id="@+id/nightTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:text="@string/night"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="@id/nameTextView"
+            app:layout_constraintTop_toBottomOf="@id/dayTitleTextView" />
+
+        <TextView
+            android:id="@+id/nightRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintBaseline_toBaselineOf="@id/nightTitleTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            tools:text="nightRangeTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
