@@ -7,6 +7,10 @@ import androidx.lifecycle.Transformations
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.domain.mainscreen.MainScreenInteractor
 import com.example.mooncascadetest.presentation.BaseViewModel
+import com.example.mooncascadetest.presentation.mainscreen.model.DayForecastMainScreenListItem
+import com.example.mooncascadetest.presentation.mainscreen.model.MainScreenListItemDelegate
+import com.example.mooncascadetest.presentation.mainscreen.model.MainScreenListItemDelegateType
+import com.example.mooncascadetest.presentation.mainscreen.model.TitleMainScreenLisItem
 import com.example.mooncascadetest.tools.OneShotEvent
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import java.util.*
@@ -39,7 +43,11 @@ class MainScreenViewModel @Inject constructor(
             val result = mutableListOf<MainScreenListItemDelegate>()
             it.forEachIndexed { index, forecastWithPlacesAndWinds ->
                 if (index == 0) {
-                    result.add(TitleMainScreenLisItem(resourceManager.getString(R.string.today)))
+                    result.add(
+                        TitleMainScreenLisItem(
+                            resourceManager.getString(R.string.today)
+                        )
+                    )
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.CURRENT,
@@ -48,7 +56,11 @@ class MainScreenViewModel @Inject constructor(
                         )
                     )
                     if (it.size > 1) {
-                        result.add(TitleMainScreenLisItem(resourceManager.getString(R.string.next_days)))
+                        result.add(
+                            TitleMainScreenLisItem(
+                                resourceManager.getString(R.string.next_days)
+                            )
+                        )
                     }
                 } else {
                     result.add(

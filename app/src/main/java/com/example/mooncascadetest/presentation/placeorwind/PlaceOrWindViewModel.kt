@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mooncascadetest.domain.placeorwind.PlaceOrWindInteractor
 import com.example.mooncascadetest.presentation.BaseViewModel
+import com.example.mooncascadetest.presentation.placeorwind.model.PlaceOrWindModel
 import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegateType
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import javax.inject.Inject

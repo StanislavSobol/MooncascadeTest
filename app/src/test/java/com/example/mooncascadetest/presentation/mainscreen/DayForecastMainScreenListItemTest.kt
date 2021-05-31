@@ -3,6 +3,7 @@ package com.example.mooncascadetest.presentation.mainscreen
 import android.content.Context
 import android.content.res.Resources
 import com.example.mooncascadetest.R
+import com.example.mooncascadetest.presentation.mainscreen.model.DayForecastMainScreenListItem
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManagerImpl
 import junit.framework.TestCase.assertEquals

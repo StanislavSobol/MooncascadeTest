@@ -9,6 +9,10 @@ import androidx.viewbinding.ViewBinding
 import com.example.mooncascadetest.databinding.ItemCurrentDayForecastBinding
 import com.example.mooncascadetest.databinding.ItemFutureDayForecastBinding
 import com.example.mooncascadetest.databinding.ItemTitleBinding
+import com.example.mooncascadetest.presentation.mainscreen.model.DayForecastMainScreenListItem
+import com.example.mooncascadetest.presentation.mainscreen.model.MainScreenListItemDelegate
+import com.example.mooncascadetest.presentation.mainscreen.model.MainScreenListItemDelegateType
+import com.example.mooncascadetest.presentation.mainscreen.model.TitleMainScreenLisItem
 import com.example.mooncascadetest.tools.setTextWithVisibility
 import java.text.SimpleDateFormat
 import java.util.*

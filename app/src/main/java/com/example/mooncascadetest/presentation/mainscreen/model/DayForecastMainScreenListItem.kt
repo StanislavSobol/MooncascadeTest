@@ -1,4 +1,4 @@
-package com.example.mooncascadetest.presentation.mainscreen
+package com.example.mooncascadetest.presentation.mainscreen.model
 
 import androidx.annotation.VisibleForTesting
 import com.example.mooncascadetest.R
@@ -77,11 +77,23 @@ data class DayForecastMainScreenListItem(
         )
 
         private fun createMinTempWord(temp: Int?, resourceManager: ResourceManager): String {
-            return resourceManager.getString(R.string.min_temp_words, intToWordDegrees(temp, resourceManager))
+            return resourceManager.getString(
+                R.string.min_temp_words,
+                intToWordDegrees(
+                    temp,
+                    resourceManager
+                )
+            )
         }
 
         private fun createMaxTempWord(temp: Int?, resourceManager: ResourceManager): String {
-            return resourceManager.getString(R.string.max_temp_words, intToWordDegrees(temp, resourceManager))
+            return resourceManager.getString(
+                R.string.max_temp_words,
+                intToWordDegrees(
+                    temp,
+                    resourceManager
+                )
+            )
         }
 
         @VisibleForTesting
