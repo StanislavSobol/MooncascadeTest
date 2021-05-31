@@ -1,237 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/smaller_margin">
+    android:layout_margin="@dimen/smaller_margin"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:cardElevation="@dimen/card_elevation">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/cardview_default_radius"
-        app:cardElevation="@dimen/cardview_default_elevation">
+        android:padding="@dimen/small_margin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/small_margin">
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:textAppearance="@style/TextTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="28 May 2021" />
 
-            <TextView
-                android:id="@+id/dateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:textAppearance="@style/TextTitle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="28 May 2021" />
+        <TextView
+            android:id="@+id/dayTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/day"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
 
-            <TextView
-                android:id="@+id/dayTitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:text="@string/day"
-                android:textAppearance="@style/TextBig"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+        <TextView
+            android:id="@+id/dayPhenomenonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTitleTextView"
+            tools:text="dayPhenomenonTextView" />
 
-            <TextView
-                android:id="@+id/dayPhenomenonTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayTitleTextView"
-                tools:text="dayPhenomenonTextView" />
+        <TextView
+            android:id="@+id/dayTempTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayPhenomenonTextView"
+            tools:text="@string/temp_range" />
 
-            <TextView
-                android:id="@+id/dayTempTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextBig"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayPhenomenonTextView"
-                tools:text="@string/temp_range" />
+        <TextView
+            android:id="@+id/dayMinTempWordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTempTextView"
+            tools:text="dayMinTempWordsTextView" />
 
-            <TextView
-                android:id="@+id/dayMinTempWordsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayTempTextView"
-                tools:text="dayMinTempWordsTextView" />
+        <TextView
+            android:id="@+id/dayMaxTempWordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayMinTempWordsTextView"
+            tools:text="dayMaxTempWordsTextView" />
 
-            <TextView
-                android:id="@+id/dayMaxTempWordsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayMinTempWordsTextView"
-                tools:text="dayMaxTempWordsTextView" />
+        <TextView
+            android:id="@+id/dayTextTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayMaxTempWordsTextView"
+            tools:text="Day Text field of the json" />
 
-            <TextView
-                android:id="@+id/dayTextTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayMaxTempWordsTextView"
-                tools:text="Day Text field of the json" />
+        <TextView
+            android:id="@+id/daySeaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTextTextView"
+            tools:text="Day Sea field of the json" />
 
-            <TextView
-                android:id="@+id/daySeaTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayTextTextView"
-                tools:text="Day Sea field of the json" />
+        <TextView
+            android:id="@+id/dayPeipsiTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/daySeaTextView"
+            tools:text="day PeipsiTextView field of the json" />
 
-            <TextView
-                android:id="@+id/dayPeipsiTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/daySeaTextView"
-                tools:text="day PeipsiTextView field of the json" />
+        <TextView
+            android:id="@+id/nightTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="@string/night"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayPeipsiTextView" />
 
-            <TextView
-                android:id="@+id/nightTitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:text="@string/night"
-                android:textAppearance="@style/TextBig"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dayPeipsiTextView" />
+        <TextView
+            android:id="@+id/nightPhenomenonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightTitleTextView"
+            tools:text="nightPhenomenonTextView" />
 
-            <TextView
-                android:id="@+id/nightPhenomenonTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightTitleTextView"
-                tools:text="nightPhenomenonTextView" />
-
-            <TextView
-                android:id="@+id/nightTempTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextBig"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightPhenomenonTextView"
-                tools:text="@string/temp_range" />
+        <TextView
+            android:id="@+id/nightTempTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightPhenomenonTextView"
+            tools:text="@string/temp_range" />
 
 
-            <TextView
-                android:id="@+id/nightMinTempWordsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightTempTextView"
-                tools:text="nightMinTempWordsTextView" />
+        <TextView
+            android:id="@+id/nightMinTempWordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightTempTextView"
+            tools:text="nightMinTempWordsTextView" />
 
-            <TextView
-                android:id="@+id/nightMaxTempWordsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightMinTempWordsTextView"
-                tools:text="nightMaxTempWordsTextView" />
+        <TextView
+            android:id="@+id/nightMaxTempWordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightMinTempWordsTextView"
+            tools:text="nightMaxTempWordsTextView" />
 
-            <TextView
-                android:id="@+id/nightTextTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightMaxTempWordsTextView"
-                tools:text="nightTextTextView" />
+        <TextView
+            android:id="@+id/nightTextTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightMaxTempWordsTextView"
+            tools:text="nightTextTextView" />
 
-            <TextView
-                android:id="@+id/nightSeaTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightTextTextView"
-                tools:text="nightSeaTextView" />
+        <TextView
+            android:id="@+id/nightSeaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightTextTextView"
+            tools:text="nightSeaTextView" />
 
-            <TextView
-                android:id="@+id/nightPeipsiTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_marginLeft="@dimen/small_margin"
-                android:layout_marginTop="@dimen/small_margin"
-                android:textAppearance="@style/TextRegular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nightSeaTextView"
-                tools:text="nightPeipsiTextView" />
+        <TextView
+            android:id="@+id/nightPeipsiTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightSeaTextView"
+            tools:text="nightPeipsiTextView" />
 
-            <TextView
-                android:id="@+id/placesAndWindsButton"
-                style="@style/ItemButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_medium_margin"
-                android:text="@string/places_and_winds"
-                app:layout_constraintTop_toBottomOf="@id/nightPeipsiTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/placesAndWindsButton"
+            style="@style/ItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_medium_margin"
+            android:text="@string/places_and_winds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightPeipsiTextView" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

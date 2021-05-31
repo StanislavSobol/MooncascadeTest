@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding.subtitleTextView.setText(text)
     }
 
+    // TODO Add a custom animation
     fun toPlacesAndWindsScreen(date: Date) {
         supportFragmentManager
             .beginTransaction()

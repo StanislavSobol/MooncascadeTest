@@ -3,7 +3,6 @@ package com.example.mooncascadetest.presentation.mainscreen
 import android.content.Context
 import android.content.res.Resources
 import com.example.mooncascadetest.R
-import com.example.mooncascadetest.tools.EMPTY_STRING
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManagerImpl
 import junit.framework.TestCase.assertEquals
@@ -34,220 +33,185 @@ class DayForecastMainScreenListItemTest {
     }
 
     @Test
-    fun `createTempRange ok`() {
-        prepareMocksForCreateTempRange()
-        val actual = DayForecastMainScreenListItem.createTempRange(MIN_TEMP, MAX_TEMP, resourceManager)
-        assertEquals(TEMP_RANGE_WRAPPED, actual)
-    }
-
-    @Test
-    fun `createTempRange both null`() {
-        prepareMocksForCreateTempRange()
-        val actual = DayForecastMainScreenListItem.createTempRange(null, null, resourceManager)
-        assertEquals(EMPTY_STRING, actual)
-    }
-
-    @Test
-    fun `createTempRange minTemp is null`() {
-        prepareMocksForCreateTempRange()
-        val actual = DayForecastMainScreenListItem.createTempRange(null, MAX_TEMP, resourceManager)
-        assertEquals(MAX_TEMP_WRAPPED, actual)
-    }
-
-    @Test
-    fun `createTempRange maxTemp is null`() {
-        prepareMocksForCreateTempRange()
-        val actual = DayForecastMainScreenListItem.createTempRange(MIN_TEMP, null, resourceManager)
-        assertEquals(MIN_TEMP_WRAPPED, actual)
-    }
-
-    @Test
-    fun `intToWord 0`() {
+    fun `intToWordDegrees 0`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(0, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(0, resourceManager)
         assertEquals("zero degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 1`() {
+    fun `intToWordDegrees 1`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(1, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(1, resourceManager)
         assertEquals("one degree Celsius", actual)
     }
 
     @Test
-    fun `intToWord -1`() {
+    fun `intToWordDegrees -1`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-1, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-1, resourceManager)
         assertEquals("minus one degree Celsius", actual)
     }
 
     @Test
-    fun `intToWord 5`() {
+    fun `intToWordDegrees 5`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(5, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(5, resourceManager)
         assertEquals("five degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -7`() {
+    fun `intToWordDegrees -7`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-7, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-7, resourceManager)
         assertEquals("minus seven degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 9`() {
+    fun `intToWordDegrees 9`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(9, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(9, resourceManager)
         assertEquals("nine degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -8`() {
+    fun `intToWordDegreesDegrees -8`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-8, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-8, resourceManager)
         assertEquals("minus eight degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 10`() {
+    fun `intToWordDegreesDegrees 10`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(10, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(10, resourceManager)
         assertEquals("ten degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 11`() {
+    fun `intToWordDegreesDegrees 11`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(11, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(11, resourceManager)
         assertEquals("eleven degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -12`() {
+    fun `intToWordDegreesDegrees -12`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-12, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-12, resourceManager)
         assertEquals("minus twelve degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 15`() {
+    fun `intToWordDegreesDegrees 15`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(15, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(15, resourceManager)
         assertEquals("fifteen degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -14`() {
+    fun `intToWordDegrees -14`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-14, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-14, resourceManager)
         assertEquals("minus fourteen degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 19`() {
+    fun `intToWordDegrees 19`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(19, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(19, resourceManager)
         assertEquals("nineteen degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -17`() {
+    fun `intToWordDegrees -17`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-17, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-17, resourceManager)
         assertEquals("minus seventeen degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 20`() {
+    fun `intToWordDegrees 20`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(20, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(20, resourceManager)
         assertEquals("twenty degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -20`() {
+    fun `intToWordDegrees -20`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-20, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-20, resourceManager)
         assertEquals("minus twenty degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 31`() {
+    fun `intToWordDegrees 31`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(31, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(31, resourceManager)
         assertEquals("thirty one degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -45`() {
+    fun `intToWordDegrees -45`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-45, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-45, resourceManager)
         assertEquals("minus forty five degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 50`() {
+    fun `intToWordDegrees 50`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(50, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(50, resourceManager)
         assertEquals("fifty degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -78`() {
+    fun `intToWordDegrees -78`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-78, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-78, resourceManager)
         assertEquals("minus seventy eight degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord 99`() {
+    fun `intToWordDegrees 99`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(99, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(99, resourceManager)
         assertEquals("ninety nine degrees Celsius", actual)
     }
 
     @Test
-    fun `intToWord -99`() {
+    fun `intToWordDegrees -99`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-99, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-99, resourceManager)
         assertEquals("minus ninety nine degrees Celsius", actual)
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun `intToWord 100`() {
+    fun `intToWordDegrees 100`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(100, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(100, resourceManager)
         assertEquals("minus seventy eight degrees Celsius", actual)
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun `intToWord -100`() {
+    fun `intToWordDegrees -100`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-100, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-100, resourceManager)
         assertEquals("minus seventy eight degrees Celsius", actual)
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun `intToWord 1234`() {
+    fun `intToWordDegrees 1234`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(1234, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(1234, resourceManager)
         assertEquals("minus seventy eight degrees Celsius", actual)
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun `intToWord -258`() {
+    fun `intToWordDegrees -258`() {
         prepareMocksForIntToWord()
-        val actual = DayForecastMainScreenListItem.intToWord(-258, resourceManager)
+        val actual = DayForecastMainScreenListItem.intToWordDegrees(-258, resourceManager)
         assertEquals("minus seventy eight degrees Celsius", actual)
-    }
-
-
-    private fun prepareMocksForCreateTempRange() {
-        `when`(appContext.getString(R.string.temp_range, TEMP_RANGE_UNWRAPPED)).thenReturn(TEMP_RANGE_WRAPPED)
-        `when`(appContext.getString(R.string.temp_range, MIN_TEMP.toString())).thenReturn(MIN_TEMP_WRAPPED)
-        `when`(appContext.getString(R.string.temp_range, MAX_TEMP.toString())).thenReturn(MAX_TEMP_WRAPPED)
     }
 
     private fun prepareMocksForIntToWord() {
@@ -301,9 +265,5 @@ class DayForecastMainScreenListItemTest {
     private companion object {
         const val MIN_TEMP = -1
         const val MAX_TEMP = 5
-        const val TEMP_RANGE_UNWRAPPED = "$MIN_TEMP .. $MAX_TEMP"
-        const val TEMP_RANGE_WRAPPED = "$MIN_TEMP .. $MAX_TEMP\u00B0C"
-        const val MIN_TEMP_WRAPPED = "$MIN_TEMP\u00B0C"
-        const val MAX_TEMP_WRAPPED = "$MAX_TEMP\u00B0C"
     }
 }

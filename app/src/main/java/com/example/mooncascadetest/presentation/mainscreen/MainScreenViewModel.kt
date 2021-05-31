@@ -43,7 +43,7 @@ class MainScreenViewModel @Inject constructor(
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.CURRENT,
-                            forecastWithPlacesAndWinds = forecastWithPlacesAndWinds,
+                            forecastWithPlacesAndWindsEntity = forecastWithPlacesAndWinds,
                             resourceManager = resourceManager
                         )
                     )
@@ -54,7 +54,7 @@ class MainScreenViewModel @Inject constructor(
                     result.add(
                         DayForecastMainScreenListItem.from(
                             type = MainScreenListItemDelegateType.FUTURE,
-                            forecastWithPlacesAndWinds = forecastWithPlacesAndWinds,
+                            forecastWithPlacesAndWindsEntity = forecastWithPlacesAndWinds,
                             resourceManager = resourceManager
                         )
                     )

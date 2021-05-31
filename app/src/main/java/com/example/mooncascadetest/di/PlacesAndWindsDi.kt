@@ -6,9 +6,11 @@ import com.example.mooncascadetest.domain.placesandwinds.PlacesAndWindsInteracto
 import com.example.mooncascadetest.presentation.placesandwinds.PlacesAndWindsFragment
 import com.example.mooncascadetest.presentation.placesandwinds.PlacesAndWindsViewModel
 import dagger.Binds
+import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.multibindings.IntoMap
+import java.util.*
 import javax.inject.Scope
 
 @Scope
@@ -23,6 +25,17 @@ annotation class PlacesAndWindsScope
 interface PlacesAndWindsComponent {
 
     fun inject(fragment: PlacesAndWindsFragment)
+
+    @Component.Builder
+    interface Builder {
+
+        fun appComponent(appComponent: AppComponent): Builder
+
+        @BindsInstance
+        fun date(date: Date): Builder
+
+        fun build(): PlacesAndWindsComponent
+    }
 }
 
 @Module

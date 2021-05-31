@@ -55,6 +55,14 @@ class RepositoryImpl(
         }
     }
 
+    override fun getPlacesForDateLiveData(date: Date) = db.getPlaceDao().selectForDateLiveData(date)
+
+    override fun getWindsForDateLiveData(date: Date) = db.getWindDao().selectForDateLiveData(date)
+
+    override fun getPlacesForDate(date: Date) = db.getPlaceDao().selectForDate(date)
+
+    override fun getWindsForDate(date: Date) = db.getWindDao().selectForDate(date)
+
     private fun createAllPlaceEntities(places: List<PlaceModel>?, date: Date, isDay: Boolean): List<PlaceEntity> {
         val result = mutableListOf<PlaceEntity>()
         places?.forEachIndexed { index, place ->

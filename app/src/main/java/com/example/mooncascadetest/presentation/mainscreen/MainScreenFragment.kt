@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.mooncascadetest.MApplication
 import com.example.mooncascadetest.R
-import com.example.mooncascadetest.databinding.FragmentMainScreenBinding
+import com.example.mooncascadetest.databinding.FragmentRecyclerViewBinding
 import com.example.mooncascadetest.di.DaggerMainScreenComponent
 import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
 import com.example.mooncascadetest.tools.ViewModelFactory
 import javax.inject.Inject
 
-class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_main_screen) {
+class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_recycler_view) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -23,18 +23,19 @@ class MainScreenFragment : BaseFragment(FragmentType.Main, R.layout.fragment_mai
         ViewModelProvider(this, viewModelFactory).get(MainScreenViewModel::class.java)
     }
 
-    private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var binding: FragmentRecyclerViewBinding
 
     // TODO get binding from the parent
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter =
-            MainScreenItemsAdapter().apply { placesAndWindsOnClick = { viewModel.onPlacesAndWindsClicked(it) } }
+        val adapter = MainScreenItemsAdapter().apply {
+            placesAndWindsOnClick = { viewModel.onPlacesAndWindsClicked(it) }
+        }
         binding.recyclerView.adapter = adapter
         viewModel.forecastLiveData.observe { adapter.setItems(it) }
         viewModel.toPlacesAndWindsEvent.observe {

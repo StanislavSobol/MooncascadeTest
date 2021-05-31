@@ -10,18 +10,20 @@
     <string name="building_map">Building map data…</string>
     <string name="no_vehicle_data">No data for the vehicle for this day</string>
 
-    <string name="today">Today:</string>
-    <string name="next_days">Next days:</string>
+    <!--Misc-->
+    <string name="today">Today</string>
+    <string name="next_days">Next days</string>
     <string name="day">Day:</string>
     <string name="night">Night:</string>
     <string name="temp_range">%s \u00B0C</string>
+    <string name="wind_range">%s m/s</string>
     <string name="minus">minus</string>
-
     <string name="one_degree">degree Celsius</string>
     <string name="plural_degrees">degrees Celsius</string>
-
     <string name="min_temp_words">Min temperature is %s</string>
     <string name="max_temp_words">Max temperature is %s</string>
+    <string name="places">Places</string>
+    <string name="winds">Winds</string>
 
     <string-array name="digits_arr">
         <item>zero</item>

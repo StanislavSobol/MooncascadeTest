@@ -105,7 +105,7 @@ data class WindEntity(
     }
 }
 
-class ForecastWithPlacesAndWinds(@Embedded val forecast: ForecastEntity) {
+class ForecastWithPlacesAndWindsEntity(@Embedded val forecast: ForecastEntity) {
     @Relation(
         parentColumn = DATE_FIELD,
         entityColumn = DATE_FIELD

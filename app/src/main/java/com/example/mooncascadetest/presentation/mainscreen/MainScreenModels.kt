@@ -2,8 +2,9 @@ package com.example.mooncascadetest.presentation.mainscreen
 
 import androidx.annotation.VisibleForTesting
 import com.example.mooncascadetest.R
-import com.example.mooncascadetest.data.db.ForecastWithPlacesAndWinds
+import com.example.mooncascadetest.data.db.ForecastWithPlacesAndWindsEntity
 import com.example.mooncascadetest.tools.EMPTY_STRING
+import com.example.mooncascadetest.tools.createTempRange
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import java.util.*
 import kotlin.math.absoluteValue
@@ -13,6 +14,7 @@ interface MainScreenListItemDelegate {
     val type: MainScreenListItemDelegateType
 }
 
+// TODO into MainScreenListItemDelegate
 enum class MainScreenListItemDelegateType(val type: Int) {
     CURRENT(0), FUTURE(1), TITLE(2)
 }
@@ -41,65 +43,59 @@ data class DayForecastMainScreenListItem(
 
         fun from(
             type: MainScreenListItemDelegateType,
-            forecastWithPlacesAndWinds: ForecastWithPlacesAndWinds,
+            forecastWithPlacesAndWindsEntity: ForecastWithPlacesAndWindsEntity,
             resourceManager: ResourceManager
         ) = DayForecastMainScreenListItem(
             type = type,
-            date = forecastWithPlacesAndWinds.forecast.date,
-            dayPhenomenon = forecastWithPlacesAndWinds.forecast.day?.phenomenon ?: EMPTY_STRING,
-            nightPhenomenon = forecastWithPlacesAndWinds.forecast.night?.phenomenon ?: EMPTY_STRING,
+            date = forecastWithPlacesAndWindsEntity.forecast.date,
+            dayPhenomenon = forecastWithPlacesAndWindsEntity.forecast.day?.phenomenon ?: EMPTY_STRING,
+            nightPhenomenon = forecastWithPlacesAndWindsEntity.forecast.night?.phenomenon ?: EMPTY_STRING,
             dayTempRange = createTempRange(
-                forecastWithPlacesAndWinds.forecast.day?.tempmin,
-                forecastWithPlacesAndWinds.forecast.day?.tempmax,
+                forecastWithPlacesAndWindsEntity.forecast.day?.tempmin,
+                forecastWithPlacesAndWindsEntity.forecast.day?.tempmax,
                 resourceManager
             ),
-            dayMinTempWords = createMinTempWord(forecastWithPlacesAndWinds.forecast.day?.tempmin, resourceManager),
-            dayMaxTempWords = createMaxTempWord(forecastWithPlacesAndWinds.forecast.day?.tempmax, resourceManager),
+            dayMinTempWords = createMinTempWord(
+                forecastWithPlacesAndWindsEntity.forecast.day?.tempmin,
+                resourceManager
+            ),
+            dayMaxTempWords = createMaxTempWord(
+                forecastWithPlacesAndWindsEntity.forecast.day?.tempmax,
+                resourceManager
+            ),
             nightTempRange = createTempRange(
-                forecastWithPlacesAndWinds.forecast.night?.tempmin,
-                forecastWithPlacesAndWinds.forecast.night?.tempmax,
+                forecastWithPlacesAndWindsEntity.forecast.night?.tempmin,
+                forecastWithPlacesAndWindsEntity.forecast.night?.tempmax,
                 resourceManager
             ),
-            nightMinTempWords = createMinTempWord(forecastWithPlacesAndWinds.forecast.night?.tempmin, resourceManager),
-            nightMaxTempWords = createMaxTempWord(forecastWithPlacesAndWinds.forecast.night?.tempmax, resourceManager),
-            dayText = forecastWithPlacesAndWinds.forecast.day?.text ?: EMPTY_STRING,
-            nightText = forecastWithPlacesAndWinds.forecast.night?.text ?: EMPTY_STRING,
-            daySea = forecastWithPlacesAndWinds.forecast.night?.sea ?: EMPTY_STRING,
-            nightSea = forecastWithPlacesAndWinds.forecast.night?.sea ?: EMPTY_STRING,
-            dayPeipsi = forecastWithPlacesAndWinds.forecast.night?.peipsi ?: EMPTY_STRING,
-            nightPeipsi = forecastWithPlacesAndWinds.forecast.night?.peipsi ?: EMPTY_STRING,
-            isPlacesAndWindsExist = !forecastWithPlacesAndWinds.places.isNullOrEmpty() &&
-                    !forecastWithPlacesAndWinds.winds.isNullOrEmpty()
+            nightMinTempWords = createMinTempWord(
+                forecastWithPlacesAndWindsEntity.forecast.night?.tempmin,
+                resourceManager
+            ),
+            nightMaxTempWords = createMaxTempWord(
+                forecastWithPlacesAndWindsEntity.forecast.night?.tempmax,
+                resourceManager
+            ),
+            dayText = forecastWithPlacesAndWindsEntity.forecast.day?.text ?: EMPTY_STRING,
+            nightText = forecastWithPlacesAndWindsEntity.forecast.night?.text ?: EMPTY_STRING,
+            daySea = forecastWithPlacesAndWindsEntity.forecast.night?.sea ?: EMPTY_STRING,
+            nightSea = forecastWithPlacesAndWindsEntity.forecast.night?.sea ?: EMPTY_STRING,
+            dayPeipsi = forecastWithPlacesAndWindsEntity.forecast.night?.peipsi ?: EMPTY_STRING,
+            nightPeipsi = forecastWithPlacesAndWindsEntity.forecast.night?.peipsi ?: EMPTY_STRING,
+            isPlacesAndWindsExist = !forecastWithPlacesAndWindsEntity.places.isNullOrEmpty() &&
+                    !forecastWithPlacesAndWindsEntity.winds.isNullOrEmpty()
         )
 
-        @VisibleForTesting
-        internal fun createTempRange(minTemp: Int?, maxTemp: Int?, resourceManager: ResourceManager): String {
-            if (minTemp == null && maxTemp == null) {
-                return EMPTY_STRING
-            }
-
-            if (minTemp != null && maxTemp != null) {
-                val value = "$minTemp .. $maxTemp"
-                return resourceManager.getString(R.string.temp_range, value)
-            }
-
-            return when {
-                minTemp != null -> resourceManager.getString(R.string.temp_range, minTemp.toString())
-                maxTemp != null -> resourceManager.getString(R.string.temp_range, maxTemp.toString())
-                else -> throw IllegalStateException()
-            }
-        }
-
         private fun createMinTempWord(temp: Int?, resourceManager: ResourceManager): String {
-            return resourceManager.getString(R.string.min_temp_words, intToWord(temp, resourceManager))
+            return resourceManager.getString(R.string.min_temp_words, intToWordDegrees(temp, resourceManager))
         }
 
         private fun createMaxTempWord(temp: Int?, resourceManager: ResourceManager): String {
-            return resourceManager.getString(R.string.max_temp_words, intToWord(temp, resourceManager))
+            return resourceManager.getString(R.string.max_temp_words, intToWordDegrees(temp, resourceManager))
         }
 
         @VisibleForTesting
-        internal fun intToWord(value: Int?, resourceManager: ResourceManager): String {
+        internal fun intToWordDegrees(value: Int?, resourceManager: ResourceManager): String {
             value ?: return EMPTY_STRING
             if (value < -99 || value > 99) {
                 throw IllegalArgumentException("The value must be between -99 and 99")
@@ -136,9 +132,8 @@ data class DayForecastMainScreenListItem(
     }
 }
 
-data class TitleMainScreenLisItem(
-    val title: String
-) : MainScreenListItemDelegate {
+data class TitleMainScreenLisItem(val title: String) : MainScreenListItemDelegate {
+
     override val type: MainScreenListItemDelegateType
         get() = MainScreenListItemDelegateType.TITLE
 }
