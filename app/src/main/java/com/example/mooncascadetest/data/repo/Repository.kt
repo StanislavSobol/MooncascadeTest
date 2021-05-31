@@ -12,17 +12,11 @@ interface Repository {
 
     suspend fun requestForecastAndPlaceToDb()
 
-    @Deprecated("getPlacesForDate")
-    fun getPlacesForDateLiveData(date: Date): LiveData<List<PlaceEntity>>
+    suspend fun getPlacesForDate(date: Date): List<PlaceEntity>
 
-    @Deprecated("getWindsForDate")
-    fun getWindsForDateLiveData(date: Date): LiveData<List<WindEntity>>
+    suspend fun getWindsForDate(date: Date): List<WindEntity>
 
-    fun getPlacesForDate(date: Date): List<PlaceEntity>
+    suspend fun getPlaceEntityById(placeId: Long): PlaceEntity
 
-    fun getWindsForDate(date: Date): List<WindEntity>
-
-    fun getPlaceEntityById(placeId: Long): PlaceEntity
-
-    fun getWindEntityById(windId: Long): WindEntity
+    suspend fun getWindEntityById(windId: Long): WindEntity
 }

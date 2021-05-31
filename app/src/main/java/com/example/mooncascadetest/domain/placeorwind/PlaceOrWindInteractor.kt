@@ -5,7 +5,7 @@ import com.example.mooncascadetest.data.db.WindEntity
 
 interface PlaceOrWindInteractor {
 
-    fun getPlaceEntityById(placeId: Long): PlaceEntity
+    suspend fun getPlaceEntityById(placeId: Long): PlaceEntity
 
-    fun getWindEntityById(windId: Long): WindEntity
+    suspend fun getWindEntityById(windId: Long): WindEntity
 }

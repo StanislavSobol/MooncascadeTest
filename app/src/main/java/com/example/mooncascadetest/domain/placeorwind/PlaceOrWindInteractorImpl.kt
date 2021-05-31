@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class PlaceOrWindInteractorImpl @Inject constructor(private val repository: Repository) : PlaceOrWindInteractor {
 
-    override fun getPlaceEntityById(placeId: Long) = repository.getPlaceEntityById(placeId)
+    override suspend fun getPlaceEntityById(placeId: Long) = repository.getPlaceEntityById(placeId)
 
-    override fun getWindEntityById(windId: Long) = repository.getWindEntityById(windId)
+    override suspend fun getWindEntityById(windId: Long) = repository.getWindEntityById(windId)
 }

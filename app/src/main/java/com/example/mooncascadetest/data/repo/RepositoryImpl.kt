@@ -98,15 +98,11 @@ class RepositoryImpl(
         return result
     }
 
-    override fun getPlacesForDateLiveData(date: Date) = db.getPlaceDao().selectForDateLiveData(date)
+    override suspend fun getPlacesForDate(date: Date) = db.getPlaceDao().selectForDate(date)
 
-    override fun getWindsForDateLiveData(date: Date) = db.getWindDao().selectForDateLiveData(date)
+    override suspend fun getWindsForDate(date: Date) = db.getWindDao().selectForDate(date)
 
-    override fun getPlacesForDate(date: Date) = db.getPlaceDao().selectForDate(date)
+    override suspend fun getPlaceEntityById(placeId: Long) = db.getPlaceDao().getByPlaceId(placeId)
 
-    override fun getWindsForDate(date: Date) = db.getWindDao().selectForDate(date)
-
-    override fun getPlaceEntityById(placeId: Long) = db.getPlaceDao().getByPlaceId(placeId)
-
-    override fun getWindEntityById(windId: Long) = db.getWindDao().getByWindId(windId)
+    override suspend fun getWindEntityById(windId: Long) = db.getWindDao().getByWindId(windId)
 }

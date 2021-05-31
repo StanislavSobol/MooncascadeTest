@@ -1,6 +1,5 @@
 package com.example.mooncascadetest.data.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,10 +14,6 @@ interface WindDao {
 
     @Query("DELETE FROM WindEntity")
     fun deleteAll()
-
-    @Deprecated("selectForDate")
-    @Query("SELECT * FROM WindEntity WHERE date=:date ORDER BY windId")
-    fun selectForDateLiveData(date: Date): LiveData<List<WindEntity>>
 
     @Query("SELECT * FROM WindEntity WHERE date=:date ORDER BY windId")
     fun selectForDate(date: Date): List<WindEntity>
