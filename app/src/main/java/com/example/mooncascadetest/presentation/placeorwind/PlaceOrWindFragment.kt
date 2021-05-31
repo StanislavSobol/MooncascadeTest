@@ -16,7 +16,7 @@ import com.example.mooncascadetest.tools.ViewModelFactory
 import com.example.mooncascadetest.tools.setTextWithVisibility
 import javax.inject.Inject
 
-class PlaceOrWindFragment : BaseFragment(FragmentType.Child, R.layout.fragment_place_or_wind) {
+class PlaceOrWindFragment : BaseFragment(FragmentType.Child) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -27,7 +27,6 @@ class PlaceOrWindFragment : BaseFragment(FragmentType.Child, R.layout.fragment_p
 
     private lateinit var binding: FragmentPlaceOrWindBinding
 
-    // TODO get binding from the parent
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentPlaceOrWindBinding.inflate(inflater, container, false)
         return binding.root

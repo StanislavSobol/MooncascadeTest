@@ -15,7 +15,6 @@ import java.util.*
 
 class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holder>() {
 
-    // TODO !!!
     var placesAndWindsOnClick: ((Date) -> (Unit))? = null
 
     private val items = mutableListOf<MainScreenListItemDelegate>()

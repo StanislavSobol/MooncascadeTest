@@ -7,6 +7,10 @@ import androidx.viewbinding.ViewBinding
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.databinding.ItemPlaceAndWindBinding
 import com.example.mooncascadetest.databinding.ItemTitleBinding
+import com.example.mooncascadetest.presentation.placesandwinds.model.BasePlaceAndWindItem
+import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegate
+import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegateType
+import com.example.mooncascadetest.presentation.placesandwinds.model.TitlePlaceAndWindsLisItem
 
 class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>() {
 
@@ -16,11 +20,11 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return when (viewType) {
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE.typeInt,
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND.typeInt -> Holder(
+            PlaceAndWindsItemDelegateType.PLACE.typeInt,
+            PlaceAndWindsItemDelegateType.WIND.typeInt -> Holder(
                 ItemPlaceAndWindBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE.typeInt -> Holder(
+            PlaceAndWindsItemDelegateType.TITLE.typeInt -> Holder(
                 ItemTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             else -> throw IllegalStateException("Cannot create a Holder: unknown type of PlaceAndWindsItemDelegateType")
@@ -47,13 +51,13 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
 
         fun bind(item: PlaceAndWindsItemDelegate) {
             when (item.type) {
-                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE,
-                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND -> {
+                PlaceAndWindsItemDelegateType.PLACE,
+                PlaceAndWindsItemDelegateType.WIND -> {
                     (binding as? ItemPlaceAndWindBinding)?.let {
                         bindItem(item as BasePlaceAndWindItem, binding)
                     }
                 }
-                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE -> {
+                PlaceAndWindsItemDelegateType.TITLE -> {
                     (binding as? ItemTitleBinding)?.let {
                         bindTitleDate(
                             item as TitlePlaceAndWindsLisItem,
@@ -70,7 +74,7 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
                 dayRangeTextView.text = item.dayRange
                 nightRangeTextView.text = item.nightRange
                 imageView.setImageResource(
-                    if (item.type == PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND) {
+                    if (item.type == PlaceAndWindsItemDelegateType.WIND) {
                         R.drawable.ic_baseline_call_made_24
                     } else {
                         R.drawable.ic_baseline_location_city_24

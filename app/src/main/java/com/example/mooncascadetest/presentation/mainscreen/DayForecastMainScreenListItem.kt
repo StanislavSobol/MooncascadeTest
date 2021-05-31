@@ -9,16 +9,6 @@ import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import java.util.*
 import kotlin.math.absoluteValue
 
-// TODO Models to diff files
-interface MainScreenListItemDelegate {
-    val type: MainScreenListItemDelegateType
-}
-
-// TODO into MainScreenListItemDelegate
-enum class MainScreenListItemDelegateType(val type: Int) {
-    CURRENT(0), FUTURE(1), TITLE(2)
-}
-
 data class DayForecastMainScreenListItem(
     override val type: MainScreenListItemDelegateType,
     val date: Date,
@@ -130,10 +120,4 @@ data class DayForecastMainScreenListItem(
             return "$minus $words $degrees".trim()
         }
     }
-}
-
-data class TitleMainScreenLisItem(val title: String) : MainScreenListItemDelegate {
-
-    override val type: MainScreenListItemDelegateType
-        get() = MainScreenListItemDelegateType.TITLE
 }

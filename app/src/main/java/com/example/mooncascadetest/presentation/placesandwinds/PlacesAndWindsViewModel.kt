@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.domain.placesandwinds.PlacesAndWindsInteractor
 import com.example.mooncascadetest.presentation.BaseViewModel
+import com.example.mooncascadetest.presentation.placesandwinds.model.*
 import com.example.mooncascadetest.tools.OneShotEvent
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import java.util.*
@@ -34,7 +35,11 @@ class PlacesAndWindsViewModel @Inject constructor(
             }
             places.let {
                 if (it.isNotEmpty()) {
-                    placesAndWindsItems.add(TitlePlaceAndWindsLisItem(resourceManager.getString(R.string.places)))
+                    placesAndWindsItems.add(
+                        TitlePlaceAndWindsLisItem(
+                            resourceManager.getString(R.string.places)
+                        )
+                    )
                     placesAndWindsItems.addAll(it)
                 }
             }
@@ -44,7 +49,11 @@ class PlacesAndWindsViewModel @Inject constructor(
             }
             winds.let {
                 if (it.isNotEmpty()) {
-                    placesAndWindsItems.add(TitlePlaceAndWindsLisItem(resourceManager.getString(R.string.winds)))
+                    placesAndWindsItems.add(
+                        TitlePlaceAndWindsLisItem(
+                            resourceManager.getString(R.string.winds)
+                        )
+                    )
                     placesAndWindsItems.addAll(it)
                 }
             }

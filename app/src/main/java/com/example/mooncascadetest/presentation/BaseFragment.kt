@@ -1,10 +1,7 @@
 package com.example.mooncascadetest.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -14,22 +11,10 @@ import com.example.mooncascadetest.R
 /**
  * Class to store all common features for diff. classes placed on MainActivity.
  */
-abstract class BaseFragment(
-    private val fragmentType: FragmentType,
-    @LayoutRes private val layoutId: Int
-) : Fragment() {
+abstract class BaseFragment(private val fragmentType: FragmentType) : Fragment() {
 
     protected val mainActivity: MainActivity
         get() = requireActivity() as MainActivity
-
-    // TODO Get binding from here
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(layoutId, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

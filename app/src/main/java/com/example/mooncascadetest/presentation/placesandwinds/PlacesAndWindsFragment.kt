@@ -16,7 +16,7 @@ import com.example.mooncascadetest.tools.ViewModelFactory
 import java.util.*
 import javax.inject.Inject
 
-class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragment_recycler_view) {
+class PlacesAndWindsFragment : BaseFragment(FragmentType.Child) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -27,7 +27,6 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragmen
 
     private lateinit var binding: FragmentRecyclerViewBinding
 
-    // TODO get binding from the parent
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
