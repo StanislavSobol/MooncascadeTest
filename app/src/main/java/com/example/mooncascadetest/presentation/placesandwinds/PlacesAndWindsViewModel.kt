@@ -1,7 +1,7 @@
 package com.example.mooncascadetest.presentation.placesandwinds
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.domain.placesandwinds.PlacesAndWindsInteractor
@@ -20,14 +20,12 @@ class PlacesAndWindsViewModel @Inject constructor(
     val placesAndWindsLiveData: LiveData<List<PlaceAndWindsItemDelegate>>
         get() = _placesAndWindsLiveData
 
-//    val placesAndWindsLiveData: LiveData<List<PlaceAndWindsItemDelegate?>> = getCombinedLiveData()
-
     init {
         launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
             val placesAndWindsItems = mutableListOf<PlaceAndWindsItemDelegate>()
 
             val places = placesAndWindsInteractor.getPlacesForDate(date).map { placeEntity ->
-                PlaceAndWindsItem.from(placeEntity, resourceManager)
+                PlaceItem.from(placeEntity, resourceManager)
             }
             places.let {
                 if (it.isNotEmpty()) {
@@ -37,7 +35,7 @@ class PlacesAndWindsViewModel @Inject constructor(
             }
 
             val winds = placesAndWindsInteractor.getWindsForDate(date).map { placeEntity ->
-                PlaceAndWindsItem.from(placeEntity, resourceManager)
+                WindItem.from(placeEntity, resourceManager)
             }
             winds.let {
                 if (it.isNotEmpty()) {
@@ -50,28 +48,7 @@ class PlacesAndWindsViewModel @Inject constructor(
         }
     }
 
-    fun onPlacesAndWindsClicked(int: Int) {
-
-    }
-
-    private fun getCombinedLiveData(): LiveData<List<PlaceAndWindsItemDelegate?>> {
-        val mediator: MediatorLiveData<List<PlaceAndWindsItemDelegate?>> = MediatorLiveData()
-        mediator.value = null
-
-        mediator.addSource(placesAndWindsInteractor.getPlacesForDateLiveData(date)) {
-            val places = mutableListOf<PlaceAndWindsItemDelegate>()
-            places.add(TitlePlaceAndWindsLisItem(resourceManager.getString(R.string.places)))
-            places.addAll(it.map { placeEntity -> PlaceAndWindsItem.from(placeEntity, resourceManager) })
-            mediator.value = places
-        }
-
-        mediator.addSource(placesAndWindsInteractor.getWindsForDateLiveData(date)) {
-            val places = mutableListOf<PlaceAndWindsItemDelegate>()
-            places.add(TitlePlaceAndWindsLisItem(resourceManager.getString(R.string.winds)))
-            places.addAll(it.map { windEntity -> PlaceAndWindsItem.from(windEntity, resourceManager) })
-            mediator.value = places
-        }
-
-        return mediator
+    fun onItemClicked(item: BasePlaceAndWindItem) {
+        Log.d("SSS", "VM onItemClicked item = $item")
     }
 }

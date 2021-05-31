@@ -1,6 +1,5 @@
 package com.example.mooncascadetest.presentation.placesandwinds
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,13 +9,17 @@ import com.example.mooncascadetest.databinding.ItemTitleBinding
 
 class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>() {
 
-    var placesAndWindsOnClick: ((Int) -> (Unit))? = null
+    var itemOnClick: ((BasePlaceAndWindItem) -> (Unit))? = null
+//    var itemOnClick: ((PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType, Int) -> (Unit))? = null
+//    var placeOnClick: ((Int) -> (Unit))? = null
+//    var windOnClick: ((Int) -> (Unit))? = null
 
     private val items = mutableListOf<PlaceAndWindsItemDelegate>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return when (viewType) {
-            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.ITEM.type -> Holder(
+            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE.type,
+            PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND.type -> Holder(
                 ItemPlaceAndWindBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE.type -> Holder(
@@ -35,8 +38,6 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
     override fun getItemViewType(position: Int) = items[position].type.type
 
     fun setItems(items: List<PlaceAndWindsItemDelegate>) {
-        Log.d("SSS", "places and winds setItems ${items.size}")
-
         this.items.run {
             clear()
             addAll(items)
@@ -48,9 +49,10 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
 
         fun bind(item: PlaceAndWindsItemDelegate) {
             when (item.type) {
-                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.ITEM -> {
+                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE,
+                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND -> {
                     (binding as? ItemPlaceAndWindBinding)?.let {
-                        bindItem(item as PlaceAndWindsItem, binding)
+                        bindItem(item as BasePlaceAndWindItem, binding)
                     }
                 }
                 PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.TITLE -> {
@@ -64,19 +66,23 @@ class PlacesAndWindsAdapter : RecyclerView.Adapter<PlacesAndWindsAdapter.Holder>
             }
         }
 
-        private fun bindItem(item: PlaceAndWindsItem, binding: ItemPlaceAndWindBinding) {
-            with(binding) {
-                nameTextView.text = item.name
-                rangeTextView.text = item.range
-            }
+        private fun bindItem(item: BasePlaceAndWindItem, binding: ItemPlaceAndWindBinding) {
+            binding.nameTextView.text = item.name
+            binding.rangeTextView.text = item.range
+            itemView.setOnClickListener { itemOnClick?.invoke(item) }
+//            when (item.type) {
+//                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.PLACE ->
+//                    itemView.setOnClickListener { placeOnClick?.invoke(item.id) }
+//                PlaceAndWindsItemDelegate.PlaceAndWindsItemDelegateType.WIND ->
+//                    itemView.setOnClickListener { windOnClick?.invoke(item.id) }
+//                else -> {
+//                    throw java.lang.IllegalStateException("Wrong type to set the item click listener")
+//                }
+//            }
         }
 
         private fun bindTitleDate(item: TitlePlaceAndWindsLisItem, binding: ItemTitleBinding) {
             binding.titleTextView.text = item.title
         }
-    }
-
-    companion object {
-        private const val DATE_FORMAT = "dd.MM.yyyy"
     }
 }

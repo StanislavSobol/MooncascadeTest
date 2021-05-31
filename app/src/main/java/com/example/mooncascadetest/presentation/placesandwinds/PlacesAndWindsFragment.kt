@@ -36,7 +36,9 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child, R.layout.fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = PlacesAndWindsAdapter().apply {
-            placesAndWindsOnClick = { viewModel.onPlacesAndWindsClicked(it) }
+            itemOnClick = { viewModel.onItemClicked(it) }
+//            placeOnClick = { viewModel.onPlaceClicked(it) }
+//            windOnClick = {viewModel.onWindClicked(it) }
         }
         binding.recyclerView.adapter = adapter
         viewModel.placesAndWindsLiveData.observe {
