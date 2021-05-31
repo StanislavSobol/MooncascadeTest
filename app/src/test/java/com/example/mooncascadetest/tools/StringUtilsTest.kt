@@ -25,12 +25,12 @@ class StringUtilsTest {
 
     @Before
     fun setup() {
+        prepareMocksForCreateTempRange()
         resourceManager = ResourceManagerImpl(appContext)
     }
 
     @Test
     fun `createTempRange ok`() {
-        prepareMocksForCreateTempRange()
         val actual = createTempRange(
             MIN_TEMP,
             MAX_TEMP, resourceManager
@@ -40,14 +40,12 @@ class StringUtilsTest {
 
     @Test
     fun `createTempRange both null`() {
-        prepareMocksForCreateTempRange()
         val actual = createTempRange(null, null, resourceManager)
         TestCase.assertEquals(EMPTY_STRING, actual)
     }
 
     @Test
     fun `createTempRange minTemp is null`() {
-        prepareMocksForCreateTempRange()
         val actual = createTempRange(
             null,
             MAX_TEMP, resourceManager
@@ -57,7 +55,6 @@ class StringUtilsTest {
 
     @Test
     fun `createTempRange maxTemp is null`() {
-        prepareMocksForCreateTempRange()
         val actual = createTempRange(MIN_TEMP, null, resourceManager)
         TestCase.assertEquals(MIN_TEMP_WRAPPED, actual)
     }
