@@ -42,19 +42,19 @@ class MainActivity : AppCompatActivity() {
         binding.subtitleTextView.setText(text)
     }
 
-    // TODO Add a custom animation
     fun toPlacesAndWindsScreen(date: Date) {
         supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
             .replace(R.id.containerLayout, PlacesAndWindsFragment.newInstance(date))
             .addToBackStack(null)
             .commitAllowingStateLoss()
     }
 
-    // TODO Add a custom animation
     fun toPlaceOrWIndScreen(typeInt: Int, id: Long) {
         supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
             .replace(R.id.containerLayout, PlaceOrWindFragment.newInstance(typeInt, id))
             .addToBackStack(null)
             .commitAllowingStateLoss()
@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     private fun toMainScreen() {
         supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
             .replace(R.id.containerLayout, MainScreenFragment.newInstance())
             .commitAllowingStateLoss()
     }
