@@ -12,6 +12,7 @@ import com.example.mooncascadetest.databinding.FragmentRecyclerViewBinding
 import com.example.mooncascadetest.di.DaggerPlacesAndWindsComponent
 import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
+import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegateType
 import com.example.mooncascadetest.tools.ViewModelFactory
 import java.util.*
 import javax.inject.Inject
@@ -38,7 +39,9 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child) {
         binding.recyclerView.adapter = adapter
         viewModel.placesAndWindsLiveData.observe { adapter.setItems(it) }
         viewModel.toPlaceOrWindDetailEvent.observe {
-            it.getContentIfNotHandled()?.let { mainActivity.toPlaceOrWIndScreen(it.type.typeInt, it.id) }
+            it.getContentIfNotHandled()?.let { item ->
+                mainActivity.toPlaceOrWIndScreen(item.type == PlaceAndWindsItemDelegateType.PLACE, item.id)
+            }
         }
     }
 

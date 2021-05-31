@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity() {
             .commitAllowingStateLoss()
     }
 
-    fun toPlaceOrWIndScreen(typeInt: Int, id: Long) {
+    fun toPlaceOrWIndScreen(isPlace: Boolean, id: Long) {
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-            .replace(R.id.containerLayout, PlaceOrWindFragment.newInstance(typeInt, id))
+            .replace(R.id.containerLayout, PlaceOrWindFragment.newInstance(isPlace, id))
             .addToBackStack(null)
             .commitAllowingStateLoss()
     }

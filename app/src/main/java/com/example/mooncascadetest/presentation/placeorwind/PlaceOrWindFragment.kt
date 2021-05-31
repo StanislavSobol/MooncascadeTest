@@ -55,8 +55,9 @@ class PlaceOrWindFragment : BaseFragment(FragmentType.Child) {
     override fun injectDependencies() {
         DaggerPlaceOrWindComponent.builder()
             .appComponent(MApplication.getAppComponent())
-            .typeInt(
-                arguments?.getInt(ARG_TYPE_INT) ?: throw IllegalStateException("Wrong or not found argument: typeId")
+            .isPlace(
+                arguments?.getBoolean(ARG_IS_PLACE)
+                    ?: throw IllegalStateException("Wrong or not found argument: typeId")
             )
             .id(
                 arguments?.getLong(ARG_ID) ?: throw IllegalStateException("Wrong or not found argument: id")
@@ -68,11 +69,11 @@ class PlaceOrWindFragment : BaseFragment(FragmentType.Child) {
     override fun provideToolbarSubTitleStringRes() = R.string.place_or_wind
 
     companion object {
-        private const val ARG_TYPE_INT = "ARG_TYPE_INT"
+        private const val ARG_IS_PLACE = "ARG_IS_PLACE"
         private const val ARG_ID = "ARG_ID"
 
-        fun newInstance(typeInt: Int, id: Long) = PlaceOrWindFragment().apply {
-            arguments = bundleOf(ARG_TYPE_INT to typeInt, ARG_ID to id)
+        fun newInstance(isPlace: Boolean, id: Long) = PlaceOrWindFragment().apply {
+            arguments = bundleOf(ARG_IS_PLACE to isPlace, ARG_ID to id)
         }
     }
 }

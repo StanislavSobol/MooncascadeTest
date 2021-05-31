@@ -31,7 +31,7 @@ interface PlaceOrWindComponent {
         fun appComponent(appComponent: AppComponent): Builder
 
         @BindsInstance
-        fun typeInt(id: Int): Builder
+        fun isPlace(isPlace: Boolean): Builder
 
         @BindsInstance
         fun id(id: Long): Builder

@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mooncascadetest.domain.placeorwind.PlaceOrWindInteractor
 import com.example.mooncascadetest.presentation.BaseViewModel
 import com.example.mooncascadetest.presentation.placeorwind.model.PlaceOrWindModel
-import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegateType
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 import javax.inject.Inject
 
 class PlaceOrWindViewModel @Inject constructor(
     private val placeOrWindInteractor: PlaceOrWindInteractor,
-    // TODO isPLace
-    private val type: Int,
+    private val isPlace: Boolean,
     private val id: Long,
     private val resourceManager: ResourceManager
 ) : BaseViewModel() {
@@ -23,15 +21,12 @@ class PlaceOrWindViewModel @Inject constructor(
 
     init {
         launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
-            when (type) {
-                PlaceAndWindsItemDelegateType.PLACE.typeInt -> {
-                    val placeEntity = placeOrWindInteractor.getPlaceEntityById(id)
-                    _placeOrWindLiveData.postValue(PlaceOrWindModel.fromPlaceEntity(placeEntity, resourceManager))
-                }
-                PlaceAndWindsItemDelegateType.WIND.typeInt -> {
-                    val windEntity = placeOrWindInteractor.getWindEntityById(id)
-                    _placeOrWindLiveData.postValue(PlaceOrWindModel.fromWindEntity(windEntity, resourceManager))
-                }
+            if (isPlace) {
+                val placeEntity = placeOrWindInteractor.getPlaceEntityById(id)
+                _placeOrWindLiveData.postValue(PlaceOrWindModel.fromPlaceEntity(placeEntity, resourceManager))
+            } else {
+                val windEntity = placeOrWindInteractor.getWindEntityById(id)
+                _placeOrWindLiveData.postValue(PlaceOrWindModel.fromWindEntity(windEntity, resourceManager))
             }
         }
     }
