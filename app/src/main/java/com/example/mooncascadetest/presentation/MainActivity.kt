@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.databinding.ActivityMainBinding
+import com.example.mooncascadetest.presentation.mainscreen.CustomTabsHelper
 import com.example.mooncascadetest.presentation.mainscreen.MainScreenFragment
 import com.example.mooncascadetest.presentation.placeorwind.PlaceOrWindFragment
 import com.example.mooncascadetest.presentation.placesandwinds.PlacesAndWindsFragment
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             toMainScreen()
         }
+        binding.rightToolbarButton.setOnClickListener { CustomTabsHelper(this) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -117,40 +119,53 @@ class MainActivity : AppCompatActivity() {
         binding.titleTextView.alpha = 0f
         binding.subtitleTextView.translationX = getScreenWidth().toFloat()
         binding.subtitleTextView.alpha = 0f
+        binding.rightToolbarButton.alpha = 0f
 
         AnimatorSet().apply {
             interpolator = AccelerateInterpolator()
             playTogether(
-                binding.titleTextView.createTranslationXAnimation(
+                binding.titleTextView.createTranslationXObjectAnimator(
                     value = ANIM_X_END_POINT,
                     duration = ANIM_TITLE_DURATION_MILLIS
                 ),
-                binding.titleTextView.createAlphaAnimation(
+                binding.titleTextView.createAlphaObjectAnimator(
                     value = ANIM_ALPHA_END_POINT,
                     duration = ANIM_TITLE_DURATION_MILLIS
                 ),
-                binding.subtitleTextView.createTranslationXAnimation(
+                binding.subtitleTextView.createTranslationXObjectAnimator(
                     value = ANIM_X_END_POINT,
                     duration = ANIM_SUBTITLE_DURATION_MILLIS,
                     startDelay = ANIM_SUBTITLE_DELAY_MILLIS
                 ),
-                binding.subtitleTextView.createAlphaAnimation(
+                binding.subtitleTextView.createAlphaObjectAnimator(
                     value = ANIM_ALPHA_END_POINT,
                     duration = ANIM_SUBTITLE_DURATION_MILLIS,
                     startDelay = ANIM_SUBTITLE_DELAY_MILLIS
+                ),
+                binding.rightToolbarButton.createAlphaObjectAnimator(
+                    value = ANIM_ALPHA_END_POINT,
+                    duration = ANIM_RIGHT_TOOLBAR_BUTTON_DURATION_MILLIS
                 )
             )
         }.start()
     }
 
-    private fun View.createTranslationXAnimation(value: Float, duration: Long, startDelay: Long = 0L): ObjectAnimator {
+    private fun View.createTranslationXObjectAnimator(
+        value: Float,
+        duration: Long,
+        startDelay: Long = 0L
+    ): ObjectAnimator {
         return ObjectAnimator.ofFloat(this, View.TRANSLATION_X, value).apply {
             this.duration = duration
             this.startDelay = startDelay
         }
     }
 
-    private fun View.createAlphaAnimation(value: Float, duration: Long, startDelay: Long = 0L): ObjectAnimator {
+    private fun View.createAlphaObjectAnimator(
+        value: Float,
+        duration: Long,
+        startDelay: Long = 0L
+    ): ObjectAnimator {
         return ObjectAnimator.ofFloat(this, View.ALPHA, value).apply {
             this.duration = duration
             this.startDelay = startDelay
@@ -167,5 +182,6 @@ class MainActivity : AppCompatActivity() {
         private const val ANIM_TITLE_DURATION_MILLIS = 1000L
         private const val ANIM_SUBTITLE_DURATION_MILLIS = 1200L
         private const val ANIM_SUBTITLE_DELAY_MILLIS = 300L
+        private const val ANIM_RIGHT_TOOLBAR_BUTTON_DURATION_MILLIS = 2000L
     }
 }

@@ -24,7 +24,7 @@ abstract class BaseFragment(private val fragmentType: FragmentType) : Fragment()
                     it.setDisplayHomeAsUpEnabled(false)
                 }
                 FragmentType.Child -> {
-                    it.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+                    it.setHomeAsUpIndicator(R.drawable.ic_arrow_mc_yellow_24dp)
                     it.setDisplayHomeAsUpEnabled(true)
                 }
             }
