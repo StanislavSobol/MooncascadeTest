@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.example.mooncascadetest.databinding.ItemCurrentDayForecastBinding
+import com.example.mooncascadetest.databinding.ItemForecastBinding
 import com.example.mooncascadetest.databinding.ItemTitleBinding
 import com.example.mooncascadetest.presentation.mainscreen.model.DayForecastMainScreenListItem
 import com.example.mooncascadetest.presentation.mainscreen.model.MainScreenListItemDelegate
@@ -24,7 +24,7 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return when (viewType) {
             MainScreenListItemDelegateType.FORECAST_ITEM.type -> Holder(
-                ItemCurrentDayForecastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemForecastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
             MainScreenListItemDelegateType.TITLE.type -> Holder(
                 ItemTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -54,7 +54,7 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
         fun bind(item: MainScreenListItemDelegate) {
             when (item.type) {
                 MainScreenListItemDelegateType.FORECAST_ITEM -> {
-                    (binding as? ItemCurrentDayForecastBinding)?.let {
+                    (binding as? ItemForecastBinding)?.let {
                         bindCurrentDateItem(
                             item as DayForecastMainScreenListItem,
                             binding
@@ -72,7 +72,7 @@ class MainScreenItemsAdapter : RecyclerView.Adapter<MainScreenItemsAdapter.Holde
             }
         }
 
-        private fun bindCurrentDateItem(item: DayForecastMainScreenListItem, binding: ItemCurrentDayForecastBinding) {
+        private fun bindCurrentDateItem(item: DayForecastMainScreenListItem, binding: ItemForecastBinding) {
             with(binding) {
                 dateTextView.text = SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(item.date)
 

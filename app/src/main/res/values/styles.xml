@@ -26,9 +26,9 @@
     </style>
 
     <style name="ItemButton">
-        <item name="android:textSize">@dimen/font_big</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
-        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:textSize">@dimen/font_bigger</item>
+        <item name="android:background">@color/mc_gray</item>
+        <item name="android:textColor">@color/mc_yellow</item>
         <item name="android:padding">@dimen/small_medium_margin</item>
     </style>
 
