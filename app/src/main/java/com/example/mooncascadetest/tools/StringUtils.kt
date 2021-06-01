@@ -4,6 +4,12 @@ import androidx.annotation.StringRes
 import com.example.mooncascadetest.R
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
 
+private const val WRONG_ARG_MESSAGE = "Wrong or not found argument: "
+
+fun notFoundArgumentExMessage(arg: String): String {
+    return "$WRONG_ARG_MESSAGE$arg"
+}
+
 fun createTempRange(min: Int?, max: Int?, resourceManager: ResourceManager): String {
     return createRange(min, max, resourceManager, R.string.temp_range)
 }

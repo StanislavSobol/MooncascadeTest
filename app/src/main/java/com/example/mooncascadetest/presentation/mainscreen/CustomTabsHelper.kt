@@ -6,6 +6,7 @@ import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import com.example.mooncascadetest.R
+import com.example.mooncascadetest.tools.HOME_SITE_URL
 
 class CustomTabsHelper(context: Context) {
 
@@ -17,10 +18,6 @@ class CustomTabsHelper(context: Context) {
                     .build()
             )
         val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(context, Uri.parse(MC_URL))
-    }
-
-    companion object {
-        private const val MC_URL = "https://mooncascade.com/"
+        customTabsIntent.launchUrl(context, Uri.parse(HOME_SITE_URL))
     }
 }

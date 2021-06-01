@@ -14,6 +14,7 @@ import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
 import com.example.mooncascadetest.presentation.placesandwinds.model.PlaceAndWindsItemDelegateType
 import com.example.mooncascadetest.tools.ViewModelFactory
+import com.example.mooncascadetest.tools.notFoundArgumentExMessage
 import java.util.*
 import javax.inject.Inject
 
@@ -51,8 +52,9 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child) {
             .appComponent(MApplication.getAppComponent())
             .date(
                 Date().apply {
-                    time = arguments?.getLong(ARG_DATE)
-                        ?: throw IllegalStateException("Wrong or not found argument: date")
+                    time = arguments?.getLong(ARG_DATE) ?: throw IllegalStateException(
+                        notFoundArgumentExMessage(ARG_DATE)
+                    )
                 }
             )
             .build()

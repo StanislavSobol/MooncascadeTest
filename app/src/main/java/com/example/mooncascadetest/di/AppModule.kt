@@ -7,6 +7,8 @@ import com.example.mooncascadetest.data.api.MoonCascadeApi
 import com.example.mooncascadetest.data.db.MoonCascadeDatabase
 import com.example.mooncascadetest.data.repo.Repository
 import com.example.mooncascadetest.data.repo.RepositoryImpl
+import com.example.mooncascadetest.tools.BASE_URL
+import com.example.mooncascadetest.tools.DB_NAME
 import com.example.mooncascadetest.tools.onlinenfoprovider.OnlineInfoProvider
 import com.example.mooncascadetest.tools.onlinenfoprovider.OnlineInfoProviderImpl
 import com.example.mooncascadetest.tools.resourcemanager.ResourceManager
@@ -85,10 +87,5 @@ class AppModule {
     @Provides
     fun provideOnlineInfoProvider(appContext: Context): OnlineInfoProvider {
         return OnlineInfoProviderImpl(appContext)
-    }
-
-    companion object {
-        private const val BASE_URL = "https://weather.aw.ee/"
-        private const val DB_NAME = "db"
     }
 }

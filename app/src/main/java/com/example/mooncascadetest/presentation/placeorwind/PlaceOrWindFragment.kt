@@ -13,6 +13,7 @@ import com.example.mooncascadetest.di.DaggerPlaceOrWindComponent
 import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
 import com.example.mooncascadetest.tools.ViewModelFactory
+import com.example.mooncascadetest.tools.notFoundArgumentExMessage
 import com.example.mooncascadetest.tools.setTextWithVisibility
 import javax.inject.Inject
 
@@ -56,11 +57,14 @@ class PlaceOrWindFragment : BaseFragment(FragmentType.Child) {
         DaggerPlaceOrWindComponent.builder()
             .appComponent(MApplication.getAppComponent())
             .isPlace(
-                arguments?.getBoolean(ARG_IS_PLACE)
-                    ?: throw IllegalStateException("Wrong or not found argument: typeId")
+                arguments?.getBoolean(ARG_IS_PLACE) ?: throw IllegalStateException(
+                    notFoundArgumentExMessage(ARG_IS_PLACE)
+                )
             )
             .id(
-                arguments?.getLong(ARG_ID) ?: throw IllegalStateException("Wrong or not found argument: id")
+                arguments?.getLong(ARG_ID) ?: throw IllegalStateException(
+                    notFoundArgumentExMessage(ARG_ID)
+                )
             )
             .build()
             .inject(this)
