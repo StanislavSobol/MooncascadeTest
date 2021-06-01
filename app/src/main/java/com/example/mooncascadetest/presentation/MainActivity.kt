@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         if (delay == 0L) {
             binding.statusTextView.isVisible = false
         } else {
-            handler.postDelayed({ binding.statusTextView.isVisible = false }, 1000)
+            handler.postDelayed({ binding.statusTextView.isVisible = false }, HIDE_LOADING_DELAY_MILLIS)
         }
     }
 
@@ -177,6 +177,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val HIDE_LOADING_DELAY_MILLIS = 1000L
+
         private const val ANIM_X_END_POINT = 0f
         private const val ANIM_ALPHA_END_POINT = 1f
         private const val ANIM_TITLE_DURATION_MILLIS = 1000L

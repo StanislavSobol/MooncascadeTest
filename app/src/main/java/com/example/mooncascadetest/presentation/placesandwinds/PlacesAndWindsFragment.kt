@@ -35,6 +35,7 @@ class PlacesAndWindsFragment : BaseFragment(FragmentType.Child) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.swipeRefreshLayout.isEnabled = false
         val adapter = PlacesAndWindsAdapter().apply { itemOnClick = { viewModel.onItemClicked(it) } }
         binding.recyclerView.adapter = adapter
         viewModel.placesAndWindsLiveData.observe { adapter.setItems(it) }

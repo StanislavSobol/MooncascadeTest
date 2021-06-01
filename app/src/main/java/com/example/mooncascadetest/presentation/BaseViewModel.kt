@@ -32,16 +32,14 @@ abstract class BaseViewModel : ViewModel() {
 
     }
 
-    fun launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone: Boolean, block: suspend () -> Unit) {
+    fun launchWithProgressInDispatchersIO(block: suspend () -> Unit) {
         viewModelScope.launch {
             try {
                 showProgress()
                 withContext(Dispatchers.IO) {
                     block.invoke()
                 }
-                if (hideLoadingStatusWhenDone) {
-                    hideProgress()
-                }
+                hideProgress()
             } catch (e: Exception) {
                 _showErrorLiveData.postValue(e.message)
             }

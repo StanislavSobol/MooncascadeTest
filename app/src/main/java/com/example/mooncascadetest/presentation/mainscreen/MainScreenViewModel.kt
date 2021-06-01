@@ -28,9 +28,11 @@ class MainScreenViewModel @Inject constructor(
         get() = _toPlacesAndWindsEvent
 
     init {
-        launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
-            mainScreenInteractor.requestForecast()
-        }
+        requestForecast()
+    }
+
+    fun swipedToRefresh() {
+        requestForecast()
     }
 
     @MainThread
@@ -73,6 +75,12 @@ class MainScreenViewModel @Inject constructor(
                 }
             }
             result
+        }
+    }
+
+    private fun requestForecast() {
+        launchWithProgressInDispatchersIO() {
+            mainScreenInteractor.requestForecast()
         }
     }
 }

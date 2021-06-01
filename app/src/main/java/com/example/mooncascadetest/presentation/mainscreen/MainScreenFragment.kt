@@ -1,6 +1,8 @@
 package com.example.mooncascadetest.presentation.mainscreen
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import com.example.mooncascadetest.databinding.FragmentRecyclerViewBinding
 import com.example.mooncascadetest.di.DaggerMainScreenComponent
 import com.example.mooncascadetest.presentation.BaseFragment
 import com.example.mooncascadetest.presentation.FragmentType
+import com.example.mooncascadetest.presentation.MainActivity
 import com.example.mooncascadetest.tools.ViewModelFactory
 import javax.inject.Inject
 
@@ -25,6 +28,8 @@ class MainScreenFragment : BaseFragment(FragmentType.Main) {
 
     private lateinit var binding: FragmentRecyclerViewBinding
 
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
@@ -32,15 +37,22 @@ class MainScreenFragment : BaseFragment(FragmentType.Main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.swipeRefreshLayout.setOnRefreshListener { viewModel.swipedToRefresh() }
+
         val adapter = MainScreenItemsAdapter().apply {
             placesAndWindsOnClick = { viewModel.onPlacesAndWindsClicked(it) }
         }
         binding.recyclerView.adapter = adapter
-        viewModel.forecastLiveData.observe { adapter.setItems(it) }
+        viewModel.forecastLiveData.observe {
+            adapter.setItems(it)
+            handler.postDelayed(
+                { binding.swipeRefreshLayout.isRefreshing = false },
+                MainActivity.HIDE_LOADING_DELAY_MILLIS
+            )
+        }
+
         viewModel.toPlacesAndWindsEvent.observe {
-            it.getContentIfNotHandled()?.let {
-                mainActivity.toPlacesAndWindsScreen(it)
-            }
+            it.getContentIfNotHandled()?.let { date -> mainActivity.toPlacesAndWindsScreen(date) }
         }
         viewModel.showProgressLiveData.observe { mainActivity.showLoadingStatus(it) }
         viewModel.showErrorLiveData.observe { mainActivity.showErrorStatus(it) }

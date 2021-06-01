@@ -20,7 +20,7 @@ class PlaceOrWindViewModel @Inject constructor(
         get() = _placeOrWindLiveData
 
     init {
-        launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
+        launchWithProgressInDispatchersIO() {
             if (isPlace) {
                 val placeEntity = placeOrWindInteractor.getPlaceEntityById(id)
                 _placeOrWindLiveData.postValue(PlaceOrWindModel.fromPlaceEntity(placeEntity, resourceManager))

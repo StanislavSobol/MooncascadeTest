@@ -27,7 +27,7 @@ class PlacesAndWindsViewModel @Inject constructor(
         get() = _toPlaceOrWindDetailEvent
 
     init {
-        launchWithProgressInDispatchersIO(hideLoadingStatusWhenDone = true) {
+        launchWithProgressInDispatchersIO() {
             val placesAndWindsItems = mutableListOf<PlaceAndWindsItemDelegate>()
 
             val places = placesAndWindsInteractor.getPlacesForDate(date).map { placeEntity ->
