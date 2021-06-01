@@ -6,7 +6,7 @@
     <string name="place_or_wind">Details</string>
 
     <!--Statuses-->
-    <string name="offline">Offline. Please, reload when online again.</string>
+    <string name="offline">Offline. Please, reload (swipe) when online again.</string>
     <string name="loading">Loading…</string>
 
     <!--Misc-->

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mooncascadetest.tools.EMPTY_STRING
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,28 +27,15 @@ abstract class BaseViewModel : ViewModel() {
     val showErrorLiveData: LiveData<String>
         get() = _showErrorLiveData
 
-    protected var loading = false
-        private set
-
-    protected open fun showProgress() {
-        loading = true
-        _showProgressLiveData.postValue(true)
-    }
-
-    protected open fun hideProgress() {
-        loading = false
-        _showProgressLiveData.postValue(false)
-
-    }
-
     fun launchWithProgressInDispatchersIO(block: suspend () -> Unit) {
         viewModelScope.launch {
             try {
-                showProgress()
+                _showProgressLiveData.postValue(true)
                 withContext(Dispatchers.IO) {
                     block.invoke()
                 }
-                hideProgress()
+                _showProgressLiveData.postValue(false)
+                _showErrorLiveData.postValue(EMPTY_STRING)
             } catch (e: Exception) {
                 _showErrorLiveData.postValue(e.message)
             }
