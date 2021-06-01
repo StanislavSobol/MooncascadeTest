@@ -8,13 +8,11 @@
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>
 
-
   <color name="mc_yellow">#FFD000</color>
   <color name="mc_gray">#3A3F42</color>
 
-
   <color name="online_green">#00ff00</color>
   <color name="offline_red">#ff0000</color>
-  <color name="status_info">@color/teal_700</color>
+  <color name="status_info">#555555</color>
   <color name="status_error">@color/design_default_color_error</color>
 </resources>

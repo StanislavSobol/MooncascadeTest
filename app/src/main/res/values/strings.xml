@@ -6,7 +6,7 @@
     <string name="place_or_wind">Details</string>
 
     <!--Statuses-->
-    <string name="offline">Offline. Reload when online again</string>
+    <string name="offline">Offline. Please, reload when online again.</string>
     <string name="loading">Loading…</string>
     <string name="building_map">Building map data…</string>
     <string name="no_vehicle_data">No data for the vehicle for this day</string>

@@ -4,9 +4,12 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.res.Resources
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -20,6 +23,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +72,8 @@ class MainActivity : AppCompatActivity() {
             .commitAllowingStateLoss()
     }
 
-    private fun toMainScreen() {
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun toMainScreen() {
         animate()
         supportFragmentManager
             .beginTransaction()
@@ -76,9 +82,34 @@ class MainActivity : AppCompatActivity() {
             .commitAllowingStateLoss()
     }
 
-    private fun hideStatus() {
-        // TODO Gone
-        binding.statusTextView.isVisible = false
+    fun showLoadingStatus(loading: Boolean) {
+        if (loading) {
+            showStatus(getString(R.string.loading), R.color.status_info)
+        } else {
+            hideStatus(300)
+        }
+    }
+
+    fun showErrorStatus(errorMessage: String) {
+        if (errorMessage.isBlank()) {
+            hideStatus()
+        } else {
+            showStatus(errorMessage, R.color.status_error)
+        }
+    }
+
+    private fun showStatus(text: String, @ColorRes colorRes: Int) {
+        binding.statusTextView.text = text
+        binding.statusTextView.setBackgroundColor(resources.getColor(colorRes))
+        binding.statusTextView.isVisible = true
+    }
+
+    private fun hideStatus(delay: Long = 0L) {
+        if (delay == 0L) {
+            binding.statusTextView.isVisible = false
+        } else {
+            handler.postDelayed({ binding.statusTextView.isVisible = false }, 1000)
+        }
     }
 
     private fun animate() {

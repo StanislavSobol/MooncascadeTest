@@ -42,6 +42,8 @@ class MainScreenFragment : BaseFragment(FragmentType.Main) {
                 mainActivity.toPlacesAndWindsScreen(it)
             }
         }
+        viewModel.showProgressLiveData.observe { mainActivity.showLoadingStatus(it) }
+        viewModel.showErrorLiveData.observe { mainActivity.showErrorStatus(it) }
     }
 
     override fun injectDependencies() {
