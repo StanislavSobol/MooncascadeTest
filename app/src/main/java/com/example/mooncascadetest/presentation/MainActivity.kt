@@ -1,7 +1,12 @@
 package com.example.mooncascadetest.presentation
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.AccelerateInterpolator
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -43,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun toPlacesAndWindsScreen(date: Date) {
+        animate()
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
@@ -52,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun toPlaceOrWIndScreen(isPlace: Boolean, id: Long) {
+        animate()
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
@@ -61,6 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toMainScreen() {
+        animate()
         supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
@@ -71,5 +79,62 @@ class MainActivity : AppCompatActivity() {
     private fun hideStatus() {
         // TODO Gone
         binding.statusTextView.isVisible = false
+    }
+
+    private fun animate() {
+        binding.titleTextView.translationX = getScreenWidth().toFloat()
+        binding.titleTextView.alpha = 0f
+        binding.subtitleTextView.translationX = getScreenWidth().toFloat()
+        binding.subtitleTextView.alpha = 0f
+
+        AnimatorSet().apply {
+            interpolator = AccelerateInterpolator()
+            playTogether(
+                binding.titleTextView.createTranslationXAnimation(
+                    value = ANIM_X_END_POINT,
+                    duration = ANIM_TITLE_DURATION_MILLIS
+                ),
+                binding.titleTextView.createAlphaAnimation(
+                    value = ANIM_ALPHA_END_POINT,
+                    duration = ANIM_TITLE_DURATION_MILLIS
+                ),
+                binding.subtitleTextView.createTranslationXAnimation(
+                    value = ANIM_X_END_POINT,
+                    duration = ANIM_SUBTITLE_DURATION_MILLIS,
+                    startDelay = ANIM_SUBTITLE_DELAY_MILLIS
+                ),
+                binding.subtitleTextView.createAlphaAnimation(
+                    value = ANIM_ALPHA_END_POINT,
+                    duration = ANIM_SUBTITLE_DURATION_MILLIS,
+                    startDelay = ANIM_SUBTITLE_DELAY_MILLIS
+                )
+            )
+        }.start()
+    }
+
+    private fun View.createTranslationXAnimation(value: Float, duration: Long, startDelay: Long = 0L): ObjectAnimator {
+        return ObjectAnimator.ofFloat(this, View.TRANSLATION_X, value).apply {
+            this.duration = duration
+            this.startDelay = startDelay
+        }
+    }
+
+    private fun View.createAlphaAnimation(value: Float, duration: Long, startDelay: Long = 0L): ObjectAnimator {
+        return ObjectAnimator.ofFloat(this, View.ALPHA, value).apply {
+            this.duration = duration
+            this.startDelay = startDelay
+        }
+    }
+
+    private fun getScreenWidth(): Int {
+        return Resources.getSystem().displayMetrics.widthPixels
+    }
+
+    companion object {
+        private const val ANIM_X_END_POINT = 0f
+        private const val ANIM_ALPHA_END_POINT = 1f
+        private const val ANIM_TITLE_DURATION_MILLIS = 1000L
+        private const val ANIM_SUBTITLE_DURATION_MILLIS = 1200L
+        private const val ANIM_SUBTITLE_DELAY_MILLIS = 300L
     }
 }

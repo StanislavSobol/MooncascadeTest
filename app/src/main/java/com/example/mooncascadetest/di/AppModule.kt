@@ -37,9 +37,7 @@ class AppModule {
     @Provides
     @Singleton
     fun provideGson(): Gson {
-        return GsonBuilder()
-            //   .registerTypeAdapter(Date::class.java, TimeTypeAdapter())
-            .create()
+        return GsonBuilder().create()
     }
 
     @Provides
