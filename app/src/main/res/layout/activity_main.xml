@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/smaller_margin"
         android:animateLayoutChanges="true"
-        android:background="@color/online_green"
+        android:background="@color/status_info"
         android:gravity="center"
         android:textAppearance="@style/TextRegular"
         android:textColor="@color/white"
