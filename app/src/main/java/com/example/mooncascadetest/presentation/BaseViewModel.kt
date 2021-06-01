@@ -11,10 +11,18 @@ import kotlinx.coroutines.withContext
 abstract class BaseViewModel : ViewModel() {
 
     private val _showProgressLiveData = MutableLiveData<Boolean>()
+
+    /**
+     * Shows or hides a loading status. True - loading status, otherwise - normal one.
+     */
     val showProgressLiveData: LiveData<Boolean>
         get() = _showProgressLiveData
 
     private val _showErrorLiveData = MutableLiveData<String>()
+
+    /**
+     * Shows an error status. If the parameter is empty, the error status is to be changed to normal one
+     */
     val showErrorLiveData: LiveData<String>
         get() = _showErrorLiveData
 

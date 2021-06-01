@@ -55,7 +55,10 @@ class MainScreenFragment : BaseFragment(FragmentType.Main) {
             it.getContentIfNotHandled()?.let { date -> mainActivity.toPlacesAndWindsScreen(date) }
         }
         viewModel.showProgressLiveData.observe { mainActivity.showLoadingStatus(it) }
-        viewModel.showErrorLiveData.observe { mainActivity.showErrorStatus(it) }
+        viewModel.showErrorLiveData.observe {
+            mainActivity.showErrorStatus(it)
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     override fun injectDependencies() {
