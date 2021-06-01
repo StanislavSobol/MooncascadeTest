@@ -1,104 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/small_medium_margin">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="nameTextView" />
+        android:scrollbars="vertical"
+        android:padding="@dimen/small_medium_margin">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/image_size"
-        android:layout_height="@dimen/image_size"
-        android:layout_marginTop="@dimen/smaller_margin"
-        android:src="@drawable/ic_baseline_location_city_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
-        tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="nameTextView" />
 
-    <TextView
-        android:id="@+id/dayTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/smaller_margin"
-        android:text="@string/day"
-        android:textAppearance="@style/TextBig"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:src="@drawable/ic_baseline_location_city_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+            tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/dayDescrTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/smaller_margin"
-        android:layout_marginLeft="@dimen/smaller_margin"
-        android:textAppearance="@style/TextRegular"
-        android:layout_marginTop="@dimen/smaller_margin"
-        app:layout_constraintTop_toBottomOf="@id/dayTitleTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="descrTextView" />
+        <TextView
+            android:id="@+id/dayTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:text="@string/day"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-    <TextView
-        android:id="@+id/dayRangeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/smaller_margin"
-        android:layout_marginLeft="@dimen/smaller_margin"
-        android:textAppearance="@style/TextRegular"
-        android:layout_marginTop="@dimen/smaller_margin"
-        app:layout_constraintTop_toBottomOf="@id/dayDescrTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="dayRangeTextView" />
+        <TextView
+            android:id="@+id/dayDescrTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayTitleTextView"
+            tools:text="descrTextView" />
 
-    <TextView
-        android:id="@+id/nightTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/smaller_margin"
-        android:text="@string/night"
-        android:textAppearance="@style/TextBig"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dayRangeTextView" />
+        <TextView
+            android:id="@+id/dayRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayDescrTextView"
+            tools:text="dayRangeTextView" />
 
-    <TextView
-        android:id="@+id/nightDescrTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/smaller_margin"
-        android:layout_marginLeft="@dimen/smaller_margin"
-        android:textAppearance="@style/TextRegular"
-        android:layout_marginTop="@dimen/smaller_margin"
-        app:layout_constraintTop_toBottomOf="@id/nightTitleTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="descrTextView" />
+        <TextView
+            android:id="@+id/nightTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:text="@string/night"
+            android:textAppearance="@style/TextBig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dayRangeTextView" />
 
-    <TextView
-        android:id="@+id/nightRangeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/smaller_margin"
-        android:layout_marginLeft="@dimen/smaller_margin"
-        android:textAppearance="@style/TextRegular"
-        android:layout_marginTop="@dimen/smaller_margin"
-        app:layout_constraintTop_toBottomOf="@id/nightDescrTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="dayRangeTextView" />
+        <TextView
+            android:id="@+id/nightDescrTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightTitleTextView"
+            tools:text="descrTextView" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/nightRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smaller_margin"
+            android:layout_marginLeft="@dimen/smaller_margin"
+            android:layout_marginTop="@dimen/smaller_margin"
+            android:textAppearance="@style/TextRegular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nightDescrTextView"
+            tools:text="dayRangeTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
